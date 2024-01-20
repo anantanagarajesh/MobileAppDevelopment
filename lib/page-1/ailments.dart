@@ -32,7 +32,7 @@ class Ailments extends StatelessWidget {
                         fontSize: 20 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -50,7 +50,7 @@ class Ailments extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(70 * fem),
-                      color: Color(0xfffffefe),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),

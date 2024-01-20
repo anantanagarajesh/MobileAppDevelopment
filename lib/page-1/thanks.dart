@@ -1,23 +1,4 @@
-import 'package:flutter/material.dart'
-    show
-        BorderRadius,
-        BoxConstraints,
-        BoxDecoration,
-        BuildContext,
-        Center,
-        Color,
-        Column,
-        Container,
-        CrossAxisAlignment,
-        EdgeInsets,
-        FontWeight,
-        Image,
-        MediaQuery,
-        StatelessWidget,
-        Text,
-        TextAlign,
-        TextButton,
-        Widget;
+import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 
 class Scene extends StatelessWidget {

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 
 class Scene extends StatelessWidget {
@@ -10,33 +7,33 @@ class Scene extends StatelessWidget {
     double baseWidth = 390;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      child: Container(
+      child: SizedBox(
         // signupowr (90:248)
         width: double.infinity,
-        height: 844*fem,
+        height: 844 * fem,
         child: Stack(
           children: [
             Positioned(
               // group283Dv (85:44)
-              left: 27*fem,
-              top: 445*fem,
+              left: 27 * fem,
+              top: 445 * fem,
               child: Container(
-                width: 337*fem,
-                height: 46.94*fem,
-                decoration: BoxDecoration (
-                  borderRadius: BorderRadius.circular(20*fem),
+                width: 337 * fem,
+                height: 46.94 * fem,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20 * fem),
                 ),
                 child: Center(
                   // rectangle21jcY (84:39)
                   child: SizedBox(
                     width: double.infinity,
-                    height: 46.94*fem,
+                    height: 46.94 * fem,
                     child: Container(
-                      decoration: BoxDecoration (
-                        borderRadius: BorderRadius.circular(20*fem),
-                        color: Color(0xffd9d9d9),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20 * fem),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -45,15 +42,15 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // rectangle1237S (39:32)
-              left: 0*fem,
-              top: 0*fem,
+              left: 0 * fem,
+              top: 0 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 390*fem,
-                  height: 844*fem,
+                  width: 390 * fem,
+                  height: 844 * fem,
                   child: Container(
-                    decoration: BoxDecoration (
-                      borderRadius: BorderRadius.circular(70*fem),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(70 * fem),
                       color: Color(0xfffffefe),
                     ),
                   ),
@@ -62,20 +59,20 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // password8ua (84:35)
-              left: 24*fem,
-              top: 297.9692306519*fem,
+              left: 24 * fem,
+              top: 297.9692306519 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 105*fem,
-                  height: 52*fem,
+                  width: 105 * fem,
+                  height: 52 * fem,
                   child: Text(
                     'Password',
-                    style: SafeGoogleFont (
+                    style: SafeGoogleFont(
                       'Inknut Antiqua',
-                      fontSize: 20*ffem,
+                      fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
-                      height: 2.5775*ffem/fem,
-                      color: Color(0xffffffff),
+                      height: 2.5775 * ffem / fem,
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -83,20 +80,20 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // phonenoBcx (87:33)
-              left: 29*fem,
-              top: 492*fem,
+              left: 29 * fem,
+              top: 492 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 110*fem,
-                  height: 52*fem,
+                  width: 110 * fem,
+                  height: 52 * fem,
                   child: Text(
                     'Phone no.',
-                    style: SafeGoogleFont (
+                    style: SafeGoogleFont(
                       'Inknut Antiqua',
-                      fontSize: 20*ffem,
+                      fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
-                      height: 2.5775*ffem/fem,
-                      color: Color(0xffffffff),
+                      height: 2.5775 * ffem / fem,
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -104,20 +101,20 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // confirmpasswordeFe (84:38)
-              left: 23*fem,
-              top: 396*fem,
+              left: 23 * fem,
+              top: 396 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 202*fem,
-                  height: 52*fem,
+                  width: 202 * fem,
+                  height: 52 * fem,
                   child: Text(
                     'Confirm Password',
-                    style: SafeGoogleFont (
+                    style: SafeGoogleFont(
                       'Inknut Antiqua',
-                      fontSize: 20*ffem,
+                      fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
-                      height: 2.5775*ffem/fem,
-                      color: Color(0xffffffff),
+                      height: 2.5775 * ffem / fem,
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -125,19 +122,19 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // emailiWQ (84:32)
-              left: 24*fem,
-              top: 201.4710063934*fem,
+              left: 24 * fem,
+              top: 201.4710063934 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 65*fem,
-                  height: 52*fem,
+                  width: 65 * fem,
+                  height: 52 * fem,
                   child: Text(
                     'Email',
-                    style: SafeGoogleFont (
+                    style: SafeGoogleFont(
                       'Inknut Antiqua',
-                      fontSize: 20*ffem,
+                      fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
-                      height: 2.5775*ffem/fem,
+                      height: 2.5775 * ffem / fem,
                       color: Color(0xffffffff),
                     ),
                   ),
@@ -146,15 +143,15 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // rectangle18QPE (84:31)
-              left: 0*fem,
-              top: 0*fem,
+              left: 0 * fem,
+              top: 0 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 390*fem,
-                  height: 194.77*fem,
+                  width: 390 * fem,
+                  height: 194.77 * fem,
                   child: Container(
-                    decoration: BoxDecoration (
-                      borderRadius: BorderRadius.circular(70*fem),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(70 * fem),
                       color: Color(0xffff3737),
                     ),
                   ),
@@ -163,21 +160,21 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // signuph7S (85:45)
-              left: 120.5*fem,
-              top: 44.9437866211*fem,
+              left: 120.5 * fem,
+              top: 44.9437866211 * fem,
               child: Center(
                 child: Align(
                   child: SizedBox(
-                    width: 134*fem,
-                    height: 83*fem,
+                    width: 134 * fem,
+                    height: 83 * fem,
                     child: Text(
                       'Sign up',
                       textAlign: TextAlign.center,
-                      style: SafeGoogleFont (
+                      style: SafeGoogleFont(
                         'Inknut Antiqua',
-                        fontSize: 32*ffem,
+                        fontSize: 32 * ffem,
                         fontWeight: FontWeight.w400,
-                        height: 2.5775*ffem/fem,
+                        height: 2.5775 * ffem / fem,
                         color: Color(0xffffffff),
                       ),
                     ),
@@ -187,21 +184,21 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // vectorAFv (85:50)
-              left: 31*fem,
-              top: 48*fem,
+              left: 31 * fem,
+              top: 48 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 12*fem,
-                  height: 20*fem,
+                  width: 12 * fem,
+                  height: 20 * fem,
                   child: TextButton(
                     onPressed: () {},
-                    style: TextButton.styleFrom (
+                    style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                     ),
                     child: Image.asset(
                       'assets/page-1/images/vector-bS4.png',
-                      width: 12*fem,
-                      height: 20*fem,
+                      width: 12 * fem,
+                      height: 20 * fem,
                     ),
                   ),
                 ),
@@ -209,15 +206,15 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // rectangle19RxY (84:33)
-              left: 26.5*fem,
-              top: 252*fem,
+              left: 26.5 * fem,
+              top: 252 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 337*fem,
-                  height: 46.94*fem,
+                  width: 337 * fem,
+                  height: 46.94 * fem,
                   child: Container(
-                    decoration: BoxDecoration (
-                      borderRadius: BorderRadius.circular(20*fem),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20 * fem),
                       color: Color(0xffd9d9d9),
                     ),
                   ),
@@ -226,21 +223,21 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // examplegmailcomWyz (84:34)
-              left: 37*fem,
-              top: 248.9692306519*fem,
+              left: 37 * fem,
+              top: 248.9692306519 * fem,
               child: Center(
                 child: Align(
                   child: SizedBox(
-                    width: 235*fem,
-                    height: 52*fem,
+                    width: 235 * fem,
+                    height: 52 * fem,
                     child: Text(
                       'example@gmail.com',
                       textAlign: TextAlign.center,
-                      style: SafeGoogleFont (
+                      style: SafeGoogleFont(
                         'Inknut Antiqua',
-                        fontSize: 20*ffem,
+                        fontSize: 20 * ffem,
                         fontWeight: FontWeight.w400,
-                        height: 2.5775*ffem/fem,
+                        height: 2.5775 * ffem / fem,
                         color: Color(0xffffffff),
                       ),
                     ),
@@ -250,15 +247,15 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // rectangle20aix (84:36)
-              left: 24*fem,
-              top: 349*fem,
+              left: 24 * fem,
+              top: 349 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 337*fem,
-                  height: 46.94*fem,
+                  width: 337 * fem,
+                  height: 46.94 * fem,
                   child: Container(
-                    decoration: BoxDecoration (
-                      borderRadius: BorderRadius.circular(20*fem),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20 * fem),
                       color: Color(0xffd9d9d9),
                     ),
                   ),
@@ -267,15 +264,15 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // rectangle21VL8 (98:101)
-              left: 27*fem,
-              top: 445*fem,
+              left: 27 * fem,
+              top: 445 * fem,
               child: Align(
                 child: SizedBox(
-                  width: 337*fem,
-                  height: 46.94*fem,
+                  width: 337 * fem,
+                  height: 46.94 * fem,
                   child: Container(
-                    decoration: BoxDecoration (
-                      borderRadius: BorderRadius.circular(20*fem),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20 * fem),
                       color: Color(0xffd9d9d9),
                     ),
                   ),
@@ -284,27 +281,27 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // group34na8 (87:34)
-              left: 27*fem,
-              top: 532.5*fem,
+              left: 27 * fem,
+              top: 532.5 * fem,
               child: Container(
-                width: 337*fem,
-                height: 52*fem,
-                decoration: BoxDecoration (
-                  borderRadius: BorderRadius.circular(20*fem),
+                width: 337 * fem,
+                height: 52 * fem,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20 * fem),
                 ),
                 child: Stack(
                   children: [
                     Positioned(
                       // rectangle21g9i (87:35)
-                      left: 0*fem,
-                      top: 2.5*fem,
+                      left: 0 * fem,
+                      top: 2.5 * fem,
                       child: Align(
                         child: SizedBox(
-                          width: 337*fem,
-                          height: 47*fem,
+                          width: 337 * fem,
+                          height: 47 * fem,
                           child: Container(
-                            decoration: BoxDecoration (
-                              borderRadius: BorderRadius.circular(20*fem),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20 * fem),
                               color: Color(0xffd9d9d9),
                             ),
                           ),
@@ -313,21 +310,21 @@ class Scene extends StatelessWidget {
                     ),
                     Positioned(
                       // xxxxxxxxxxyec (87:36)
-                      left: 18.5*fem,
-                      top: 0*fem,
+                      left: 18.5 * fem,
+                      top: 0 * fem,
                       child: Center(
                         child: Align(
                           child: SizedBox(
-                            width: 220*fem,
-                            height: 52*fem,
+                            width: 220 * fem,
+                            height: 52 * fem,
                             child: Text(
                               '+91-XXXXXXXXXX',
                               textAlign: TextAlign.center,
-                              style: SafeGoogleFont (
+                              style: SafeGoogleFont(
                                 'Inknut Antiqua',
-                                fontSize: 20*ffem,
+                                fontSize: 20 * ffem,
                                 fontWeight: FontWeight.w400,
-                                height: 2.5775*ffem/fem,
+                                height: 2.5775 * ffem / fem,
                                 color: Color(0xffffffff),
                               ),
                             ),
@@ -341,34 +338,34 @@ class Scene extends StatelessWidget {
             ),
             Positioned(
               // properbuttong3E (142:148)
-              left: 23*fem,
-              top: 636*fem,
+              left: 23 * fem,
+              top: 636 * fem,
               child: TextButton(
                 onPressed: () {},
-                style: TextButton.styleFrom (
+                style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
                 child: Container(
-                  width: 349*fem,
-                  height: 64*fem,
+                  width: 349 * fem,
+                  height: 64 * fem,
                   child: Container(
                     // frame15nrx (I142:148;65:23)
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: BoxDecoration (
+                    decoration: BoxDecoration(
                       color: Color(0xffff3737),
-                      borderRadius: BorderRadius.circular(20*fem),
+                      borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Center(
                       child: Center(
                         child: Text(
                           'Sign up',
                           textAlign: TextAlign.center,
-                          style: SafeGoogleFont (
+                          style: SafeGoogleFont(
                             'Inknut Antiqua',
-                            fontSize: 24*ffem,
+                            fontSize: 24 * ffem,
                             fontWeight: FontWeight.w400,
-                            height: 2.5775*ffem/fem,
+                            height: 2.5775 * ffem / fem,
                             color: Color(0xffffffff),
                           ),
                         ),
@@ -381,6 +378,6 @@ class Scene extends StatelessWidget {
           ],
         ),
       ),
-          );
+    );
   }
 }

@@ -1,7 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart'
+    show
+        BorderRadius,
+        BoxConstraints,
+        BoxDecoration,
+        BuildContext,
+        Center,
+        Color,
+        Column,
+        Container,
+        CrossAxisAlignment,
+        EdgeInsets,
+        FontWeight,
+        Image,
+        MediaQuery,
+        StatelessWidget,
+        Text,
+        TextAlign,
+        TextButton,
+        Widget;
 import 'package:myapp/utils.dart';
 
 class Scene extends StatelessWidget {
@@ -14,30 +30,31 @@ class Scene extends StatelessWidget {
       width: double.infinity,
       child: Container(
         // thanksLPW (94:102)
-        padding: EdgeInsets.fromLTRB(33*fem, 44*fem, 35*fem, 352*fem),
+        padding: EdgeInsets.fromLTRB(33 * fem, 44 * fem, 35 * fem, 352 * fem),
         width: double.infinity,
-        decoration: BoxDecoration (
+        decoration: BoxDecoration(
           color: Color(0xfffffefe),
-          borderRadius: BorderRadius.circular(70*fem),
+          borderRadius: BorderRadius.circular(70 * fem),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               // vectorcrp (119:100)
-              margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 310*fem, 46*fem),
+              margin:
+                  EdgeInsets.fromLTRB(0 * fem, 0 * fem, 310 * fem, 46 * fem),
               child: TextButton(
                 onPressed: () {},
-                style: TextButton.styleFrom (
+                style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
                 child: Container(
-                  width: 12*fem,
-                  height: 20*fem,
+                  width: 12 * fem,
+                  height: 20 * fem,
                   child: Image.asset(
                     'assets/page-1/images/vector-XEL.png',
-                    width: 12*fem,
-                    height: 20*fem,
+                    width: 12 * fem,
+                    height: 20 * fem,
                   ),
                 ),
               ),
@@ -45,18 +62,19 @@ class Scene extends StatelessWidget {
             Center(
               // thankyouforregisteringwewillco (94:104)
               child: Container(
-                margin: EdgeInsets.fromLTRB(1*fem, 0*fem, 0*fem, 42*fem),
-                constraints: BoxConstraints (
-                  maxWidth: 321*fem,
+                margin:
+                    EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 42 * fem),
+                constraints: BoxConstraints(
+                  maxWidth: 321 * fem,
                 ),
                 child: Text(
                   'Thank you for registering. We will contact you soon',
                   textAlign: TextAlign.center,
-                  style: SafeGoogleFont (
+                  style: SafeGoogleFont(
                     'Inknut Antiqua',
-                    fontSize: 36*ffem,
+                    fontSize: 36 * ffem,
                     fontWeight: FontWeight.w400,
-                    height: 1.3888888889*ffem/fem,
+                    height: 1.3888888889 * ffem / fem,
                     color: Color(0xff000000),
                   ),
                 ),
@@ -64,18 +82,18 @@ class Scene extends StatelessWidget {
             ),
             Container(
               // vectorY8C (40:80)
-              margin: EdgeInsets.fromLTRB(2*fem, 0*fem, 0*fem, 0*fem),
-              width: 140*fem,
-              height: 140*fem,
+              margin: EdgeInsets.fromLTRB(2 * fem, 0 * fem, 0 * fem, 0 * fem),
+              width: 140 * fem,
+              height: 140 * fem,
               child: Image.asset(
                 'assets/page-1/images/vector-NX6.png',
-                width: 140*fem,
-                height: 140*fem,
+                width: 140 * fem,
+                height: 140 * fem,
               ),
             ),
           ],
         ),
       ),
-          );
+    );
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/donors.dart';
+import 'package:myapp/page-1/login.dart';
 
-class Scene extends StatelessWidget {
+class OccupationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -192,21 +194,31 @@ class Scene extends StatelessWidget {
                                 ),
                               ),
                               Positioned(
-                                // donorBrc (I168:204;168:155)
                                 left: 43 * fem,
                                 top: 0 * fem,
-                                child: Align(
-                                  child: SizedBox(
-                                    width: 70 * fem,
-                                    height: 52 * fem,
-                                    child: Text(
-                                      'Donor',
-                                      style: SafeGoogleFont(
-                                        'Inknut Antiqua',
-                                        fontSize: 20 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 2.5775 * ffem / fem,
-                                        color: Color(0xffffffff),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigate to the 'Donors' page
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Login()), // Replace 'DonorsPage' with the actual class name
+                                    );
+                                  },
+                                  child: Align(
+                                    child: SizedBox(
+                                      width: 70 * fem,
+                                      height: 52 * fem,
+                                      child: Text(
+                                        'Donor',
+                                        style: SafeGoogleFont(
+                                          'Inknut Antiqua',
+                                          fontSize: 20 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 2.5775 * ffem / fem,
+                                          color: Color(0xffffffff),
+                                        ),
                                       ),
                                     ),
                                   ),

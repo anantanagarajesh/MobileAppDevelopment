@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/occupation.dart';
 
-class DonateBG extends StatelessWidget {
+class ReceiveBG extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 391;
@@ -100,22 +100,29 @@ class DonateBG extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              // vectorhbA (39:36)
                               left: 26 * fem,
                               top: 50.0593261719 * fem,
-                              child: Align(
-                                child: SizedBox(
-                                  width: 12 * fem,
-                                  height: 21.02 * fem,
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    style: TextButton.styleFrom(
-                                      padding: EdgeInsets.zero,
-                                    ),
-                                    child: Image.asset(
-                                      'assets/page-1/images/vector-h3i.png',
-                                      width: 12 * fem,
-                                      height: 21.02 * fem,
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Navigate back to the previous page
+                                  Navigator.pop(context);
+                                },
+                                child: Align(
+                                  child: SizedBox(
+                                    width: 12 * fem,
+                                    height: 21.02 * fem,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: TextButton.styleFrom(
+                                        padding: EdgeInsets.zero,
+                                      ),
+                                      child: Image.asset(
+                                        'assets/page-1/images/vector-h3i.png',
+                                        width: 12 * fem,
+                                        height: 21.02 * fem,
+                                      ),
                                     ),
                                   ),
                                 ),

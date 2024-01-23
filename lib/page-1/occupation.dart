@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
-import 'package:myapp/page-1/donors.dart';
 import 'package:myapp/page-1/login.dart';
+import 'package:myapp/page-1/RecieveBG.dart';
+import 'package:myapp/page-1/admin.dart';
 
 class OccupationPage extends StatelessWidget {
   @override
@@ -125,21 +126,32 @@ class OccupationPage extends StatelessWidget {
                                 ),
                               ),
                               Positioned(
-                                // patientkMz (I168:204;168:153)
                                 left: 43 * fem,
                                 top: 0 * fem,
-                                child: Align(
-                                  child: SizedBox(
-                                    width: 81 * fem,
-                                    height: 52 * fem,
-                                    child: Text(
-                                      'Patient',
-                                      style: SafeGoogleFont(
-                                        'Inknut Antiqua',
-                                        fontSize: 20 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 2.5775 * ffem / fem,
-                                        color: Color(0xffffffff),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigate to the desired page when "Patient" is pressed
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ReceiveBG(), // Replace 'PatientPage' with the actual class name
+                                      ),
+                                    );
+                                  },
+                                  child: Align(
+                                    child: SizedBox(
+                                      width: 81 * fem,
+                                      height: 52 * fem,
+                                      child: Text(
+                                        'Patient',
+                                        style: SafeGoogleFont(
+                                          'Inknut Antiqua',
+                                          fontSize: 20 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 2.5775 * ffem / fem,
+                                          color: Color(0xffffffff),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -227,7 +239,7 @@ class OccupationPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           // autogroupjkunJAY (9DSyWFmno1bCHbQXveJKuN)
                           width: double.infinity,
                           height: 52 * fem,

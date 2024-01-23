@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/thanks.dart';
 
 class Ailments extends StatelessWidget {
   @override
@@ -50,7 +51,7 @@ class Ailments extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(70 * fem),
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                 ),
@@ -186,7 +187,7 @@ class Ailments extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -201,7 +202,7 @@ class Ailments extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -216,7 +217,7 @@ class Ailments extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -231,7 +232,7 @@ class Ailments extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -246,7 +247,7 @@ class Ailments extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -261,7 +262,7 @@ class Ailments extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -273,7 +274,7 @@ class Ailments extends StatelessWidget {
                         fontSize: 14 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ],
@@ -299,10 +300,10 @@ class Ailments extends StatelessWidget {
             Positioned(
               // group47FLg (142:103)
               left: 30 * fem,
-              top: 664 * fem,
+              top: 650 * fem,
               child: Container(
-                padding: EdgeInsets.fromLTRB(
-                    12 * fem, 4.5 * fem, 12 * fem, 4.5 * fem),
+                padding:
+                    EdgeInsets.fromLTRB(12 * fem, 0 * fem, 12 * fem, 4.5 * fem),
                 width: 337 * fem,
                 height: 40 * fem,
                 decoration: BoxDecoration(
@@ -324,10 +325,10 @@ class Ailments extends StatelessWidget {
             Positioned(
               // group32W1i (138:172)
               left: 30 * fem,
-              top: 526 * fem,
+              top: 505 * fem,
               child: Container(
-                padding: EdgeInsets.fromLTRB(
-                    12 * fem, 4.5 * fem, 12 * fem, 4.5 * fem),
+                padding:
+                    EdgeInsets.fromLTRB(12 * fem, 0 * fem, 12 * fem, 4.5 * fem),
                 width: 337 * fem,
                 height: 40 * fem,
                 decoration: BoxDecoration(
@@ -349,10 +350,10 @@ class Ailments extends StatelessWidget {
             Positioned(
               // group48A6G (186:616)
               left: 30 * fem,
-              top: 590 * fem,
+              top: 570 * fem,
               child: Container(
-                padding: EdgeInsets.fromLTRB(
-                    12 * fem, 4.5 * fem, 12 * fem, 4.5 * fem),
+                padding:
+                    EdgeInsets.fromLTRB(12 * fem, 0 * fem, 12 * fem, 4.5 * fem),
                 width: 337 * fem,
                 height: 40 * fem,
                 decoration: BoxDecoration(
@@ -372,22 +373,37 @@ class Ailments extends StatelessWidget {
               ),
             ),
             Positioned(
-              // group47RH6 (142:132)
               left: 137 * fem,
               top: 764 * fem,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                ),
-                child: Container(
-                  width: 124 * fem,
-                  height: 52 * fem,
-                  decoration: BoxDecoration(
-                    color: Color(0xffff3737),
-                    borderRadius: BorderRadius.circular(20 * fem),
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to the desired page when "Save" is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Thanks()), // Replace 'YourPage' with the actual class name
+                  );
+                },
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Thanks()), // Replace 'YourPage' with the actual class name
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
                   ),
-                  child: Center(
+                  child: Container(
+                    width: 124 * fem,
+                    height: 52 * fem,
+                    decoration: BoxDecoration(
+                      color: Color(0xffff3737),
+                      borderRadius: BorderRadius.circular(20 * fem),
+                    ),
                     child: Center(
                       child: Text(
                         'Save',
@@ -462,19 +478,27 @@ class Ailments extends StatelessWidget {
                       // vectormNt (186:955)
                       left: 30 * fem,
                       top: 33 * fem,
-                      child: Align(
-                        child: SizedBox(
-                          width: 12 * fem,
-                          height: 20 * fem,
-                          child: TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: Image.asset(
-                              'assets/page-1/images/vector-zzQ.png',
-                              width: 12 * fem,
-                              height: 20 * fem,
+                      child: GestureDetector(
+                        onTap: () {
+                          // Navigate back to the previous page
+                          Navigator.pop(context);
+                        },
+                        child: Align(
+                          child: SizedBox(
+                            width: 12 * fem,
+                            height: 20 * fem,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Image.asset(
+                                'assets/page-1/images/vector-zzQ.png',
+                                width: 12 * fem,
+                                height: 20 * fem,
+                              ),
                             ),
                           ),
                         ),

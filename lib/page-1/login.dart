@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/DonorBG.dart'; //on clicking login
 import 'package:myapp/utils.dart';
-import 'package:myapp/page-1/sign-up.dart';
+import 'package:myapp/page-1/sign-up.dart'; //on clicking create account
+import 'package:myapp/page-1/occupation.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -98,21 +100,28 @@ class Login extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      // vector5LQ (37:5)
                       margin: EdgeInsets.fromLTRB(
                           0 * fem, 0 * fem, 84 * fem, 78.94 * fem),
-                      child: TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                        ),
-                        child: Container(
-                          width: 12 * fem,
-                          height: 20 * fem,
-                          child: Image.asset(
-                            'assets/page-1/images/vector-XLx.png',
+                      child: GestureDetector(
+                        onTap: () {
+                          // Navigate back to the previous page
+                          Navigator.pop(context);
+                        },
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                          ),
+                          child: SizedBox(
                             width: 12 * fem,
                             height: 20 * fem,
+                            child: Image.asset(
+                              'assets/page-1/images/vector-XLx.png',
+                              width: 12 * fem,
+                              height: 20 * fem,
+                            ),
                           ),
                         ),
                       ),
@@ -357,11 +366,18 @@ class Login extends StatelessWidget {
               ),
             ),
             Positioned(
-              // properbuttonYKn (65:70)
               left: 20 * fem,
               top: 518.3858032227 * fem,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Navigate to the "Donor.dart" page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DonorBG()), // Replace 'DonorScreen' with the actual class name
+                  );
+                },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
@@ -369,7 +385,6 @@ class Login extends StatelessWidget {
                   width: 349 * fem,
                   height: 63.92 * fem,
                   child: Container(
-                    // frame15Fjz (65:23)
                     width: double.infinity,
                     height: double.infinity,
                     decoration: BoxDecoration(
@@ -377,17 +392,15 @@ class Login extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Center(
-                      child: Center(
-                        child: Text(
-                          'Login',
-                          textAlign: TextAlign.center,
-                          style: SafeGoogleFont(
-                            'Inknut Antiqua',
-                            fontSize: 24 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 2.5775 * ffem / fem,
-                            color: Color(0xffffffff),
-                          ),
+                      child: Text(
+                        'Login',
+                        textAlign: TextAlign.center,
+                        style: SafeGoogleFont(
+                          'Inknut Antiqua',
+                          fontSize: 24 * ffem,
+                          fontWeight: FontWeight.w400,
+                          height: 2.5775 * ffem / fem,
+                          color: Color(0xffffffff),
                         ),
                       ),
                     ),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/donation.dart';
+import 'package:myapp/page-1/login.dart';
 
-class Scene extends StatelessWidget {
+class DonorBG extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 391;
@@ -98,22 +97,29 @@ class Scene extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              // vectorPV6 (157:129)
                               left: 26 * fem,
                               top: 50.0593261719 * fem,
-                              child: Align(
-                                child: SizedBox(
-                                  width: 12 * fem,
-                                  height: 21.02 * fem,
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    style: TextButton.styleFrom(
-                                      padding: EdgeInsets.zero,
-                                    ),
-                                    child: Image.asset(
-                                      'assets/page-1/images/vector-rRJ.png',
-                                      width: 12 * fem,
-                                      height: 21.02 * fem,
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Navigate back to the previous page
+                                  Navigator.pop(context);
+                                },
+                                child: Align(
+                                  child: SizedBox(
+                                    width: 12 * fem,
+                                    height: 21.02 * fem,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: TextButton.styleFrom(
+                                        padding: EdgeInsets.zero,
+                                      ),
+                                      child: Image.asset(
+                                        'assets/page-1/images/vector-rRJ.png',
+                                        width: 12 * fem,
+                                        height: 21.02 * fem,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -162,7 +168,7 @@ class Scene extends StatelessWidget {
                                   2 * fem, 17.5 * fem, 0 * fem, 0 * fem),
                               width: double.infinity,
                               height: 201.5 * fem,
-                              child: Container(
+                              child: SizedBox(
                                 // group57CL4 (189:1459)
                                 width: double.infinity,
                                 height: double.infinity,
@@ -502,7 +508,7 @@ class Scene extends StatelessWidget {
                                             style: TextButton.styleFrom(
                                               padding: EdgeInsets.zero,
                                             ),
-                                            child: Container(
+                                            child: SizedBox(
                                               width: 70 * fem,
                                               height: double.infinity,
                                               child: Container(
@@ -820,23 +826,44 @@ class Scene extends StatelessWidget {
                                     ),
                                   ),
                                   Positioned(
-                                    // donate5E4 (157:261)
                                     left: 49.5 * fem,
                                     top: 0 * fem,
-                                    child: Center(
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 128 * fem,
-                                          height: 83 * fem,
-                                          child: Text(
-                                            'Donate',
-                                            textAlign: TextAlign.center,
-                                            style: SafeGoogleFont(
-                                              'Inknut Antiqua',
-                                              fontSize: 32 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 2.5775 * ffem / fem,
-                                              color: Color(0xff000000),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        // Navigate to the "Donation.dart" page
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DonationPage()), // Replace 'DonationScreen' with the actual class name
+                                        );
+                                      },
+                                      child: Center(
+                                        child: Align(
+                                          child: SizedBox(
+                                            width: 128 * fem,
+                                            height: 60 * fem,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(
+                                                    0xffff3737), // You can customize the color if needed
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        20 * fem),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Donate',
+                                                  textAlign: TextAlign.center,
+                                                  style: SafeGoogleFont(
+                                                    'Inknut Antiqua',
+                                                    fontSize: 32 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 2.5775 * ffem / fem,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),

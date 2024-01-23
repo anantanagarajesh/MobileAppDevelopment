@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
 
-class Scene extends StatelessWidget {
+class Save extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 124;
@@ -15,27 +15,27 @@ class Scene extends StatelessWidget {
       child: Container(
         // saveWjW (142:128)
         width: double.infinity,
-        height: 52*fem,
-        decoration: BoxDecoration (
+        height: 52 * fem,
+        decoration: BoxDecoration(
           color: Color(0xffff3737),
-          borderRadius: BorderRadius.circular(20*fem),
+          borderRadius: BorderRadius.circular(20 * fem),
         ),
         child: Center(
           child: Center(
             child: Text(
               'Save',
               textAlign: TextAlign.center,
-              style: SafeGoogleFont (
+              style: SafeGoogleFont(
                 'Inknut Antiqua',
-                fontSize: 20*ffem,
+                fontSize: 20 * ffem,
                 fontWeight: FontWeight.w400,
-                height: 2.5775*ffem/fem,
+                height: 2.5775 * ffem / fem,
                 color: Color(0xffffffff),
               ),
             ),
           ),
         ),
       ),
-          );
+    );
   }
 }

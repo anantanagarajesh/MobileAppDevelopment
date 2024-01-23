@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 
-class Scene extends StatelessWidget {
+class Thanks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;

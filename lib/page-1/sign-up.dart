@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/login.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -135,7 +136,7 @@ class SignUpPage extends StatelessWidget {
                       fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -159,7 +160,6 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              // signuph7S (85:45)
               left: 120.5 * fem,
               top: 44.9437866211 * fem,
               child: Center(
@@ -168,7 +168,7 @@ class SignUpPage extends StatelessWidget {
                     width: 134 * fem,
                     height: 83 * fem,
                     child: Text(
-                      'Sign up',
+                      'Sign Up',
                       textAlign: TextAlign.center,
                       style: SafeGoogleFont(
                         'Inknut Antiqua',
@@ -183,22 +183,30 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              // vectorAFv (85:50)
               left: 31 * fem,
               top: 48 * fem,
-              child: Align(
-                child: SizedBox(
-                  width: 12 * fem,
-                  height: 20 * fem,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: Image.asset(
-                      'assets/page-1/images/vector-bS4.png',
-                      width: 12 * fem,
-                      height: 20 * fem,
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate back to the previous page
+                  Navigator.pop(context);
+                },
+                child: Align(
+                  child: SizedBox(
+                    width: 12 * fem,
+                    height: 20 * fem,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        print("going back");
+                      },
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: Image.asset(
+                        'assets/page-1/images/vector-bS4.png',
+                        width: 12 * fem,
+                        height: 20 * fem,
+                      ),
                     ),
                   ),
                 ),
@@ -337,29 +345,43 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              // properbuttong3E (142:148)
               left: 23 * fem,
               top: 636 * fem,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                ),
-                child: Container(
-                  width: 349 * fem,
-                  height: 64 * fem,
-                  child: Container(
-                    // frame15nrx (I142:148;65:23)
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Color(0xffff3737),
-                      borderRadius: BorderRadius.circular(20 * fem),
-                    ),
-                    child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to the "login.dart" page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Login()), // Replace 'LoginScreen' with the actual class name
+                  );
+                },
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Login()), // Replace 'LoginScreen' with the actual class name
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: SizedBox(
+                    width: 349 * fem,
+                    height: 64 * fem,
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Color(0xffff3737),
+                        borderRadius: BorderRadius.circular(20 * fem),
+                      ),
                       child: Center(
                         child: Text(
-                          'Sign up',
+                          'Sign Up',
                           textAlign: TextAlign.center,
                           style: SafeGoogleFont(
                             'Inknut Antiqua',

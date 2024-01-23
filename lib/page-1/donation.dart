@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/ailments.dart';
 
-class DonorsPage extends StatelessWidget {
+class DonationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      child: Container(
+      child: SizedBox(
         // donationsrt (122:162)
         width: double.infinity,
         height: 844 * fem,
@@ -35,7 +33,7 @@ class DonorsPage extends StatelessWidget {
                         fontSize: 20 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -63,7 +61,7 @@ class DonorsPage extends StatelessWidget {
               // frame25PTr (122:105)
               left: 30 * fem,
               top: 239 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 337 * fem,
                 height: 250 * fem,
                 child: Stack(
@@ -153,7 +151,7 @@ class DonorsPage extends StatelessWidget {
                           width: 136 * fem,
                           height: 31 * fem,
                           child: Text(
-                            '+91 -XXXXXXXXXX',
+                            '+91-XXXXXXXXXX',
                             style: SafeGoogleFont(
                               'Inknut Antiqua',
                               fontSize: 12 * ffem,
@@ -225,7 +223,7 @@ class DonorsPage extends StatelessWidget {
                               fontSize: 14 * ffem,
                               fontWeight: FontWeight.w400,
                               height: 2.5775 * ffem / fem,
-                              color: Color(0xffffffff),
+                              color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                         ),
@@ -246,7 +244,7 @@ class DonorsPage extends StatelessWidget {
                               fontSize: 14 * ffem,
                               fontWeight: FontWeight.w400,
                               height: 2.5775 * ffem / fem,
-                              color: Color(0xffffffff),
+                              color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                         ),
@@ -267,7 +265,7 @@ class DonorsPage extends StatelessWidget {
                               fontSize: 14 * ffem,
                               fontWeight: FontWeight.w400,
                               height: 2.5775 * ffem / fem,
-                              color: Color(0xffffffff),
+                              color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                         ),
@@ -294,7 +292,7 @@ class DonorsPage extends StatelessWidget {
                         fontSize: 14 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -316,7 +314,7 @@ class DonorsPage extends StatelessWidget {
                       fontSize: 14 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -367,7 +365,7 @@ class DonorsPage extends StatelessWidget {
                   color: Color(0xffff3737),
                   borderRadius: BorderRadius.circular(70 * fem),
                 ),
-                child: Container(
+                child: SizedBox(
                   // frame34ZW4 (122:127)
                   width: double.infinity,
                   height: double.infinity,
@@ -387,7 +385,7 @@ class DonorsPage extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont(
                                   'Inknut Antiqua',
-                                  fontSize: 32 * ffem,
+                                  fontSize: 28 * ffem,
                                   fontWeight: FontWeight.w400,
                                   height: 2.5775 * ffem / fem,
                                   color: Color(0xffffffff),
@@ -398,22 +396,29 @@ class DonorsPage extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        // vectorbhe (122:129)
                         left: 16 * fem,
                         top: 0 * fem,
-                        child: Align(
-                          child: SizedBox(
-                            width: 12 * fem,
-                            height: 20 * fem,
-                            child: TextButton(
-                              onPressed: () {},
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                              ),
-                              child: Image.asset(
-                                'assets/page-1/images/vector-wzt.png',
-                                width: 12 * fem,
-                                height: 20 * fem,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Navigate back to the previous page
+                            Navigator.pop(context);
+                          },
+                          child: Align(
+                            child: SizedBox(
+                              width: 12 * fem,
+                              height: 20 * fem,
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                style: TextButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: Image.asset(
+                                  'assets/page-1/images/vector-wzt.png',
+                                  width: 12 * fem,
+                                  height: 20 * fem,
+                                ),
                               ),
                             ),
                           ),
@@ -439,7 +444,7 @@ class DonorsPage extends StatelessWidget {
                       fontSize: 14 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -449,7 +454,7 @@ class DonorsPage extends StatelessWidget {
               // group46b5N (122:131)
               left: 43 * fem,
               top: 565 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -503,7 +508,7 @@ class DonorsPage extends StatelessWidget {
               // group47iZJ (122:132)
               left: 143 * fem,
               top: 560 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -557,7 +562,7 @@ class DonorsPage extends StatelessWidget {
               // group48FBr (122:133)
               left: 234 * fem,
               top: 560 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -611,7 +616,7 @@ class DonorsPage extends StatelessWidget {
               // group49Tx8 (122:134)
               left: 321 * fem,
               top: 560 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -665,7 +670,7 @@ class DonorsPage extends StatelessWidget {
               // group50DZv (122:135)
               left: 42 * fem,
               top: 593 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -719,7 +724,7 @@ class DonorsPage extends StatelessWidget {
               // group51MJk (122:136)
               left: 143 * fem,
               top: 593 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -773,7 +778,7 @@ class DonorsPage extends StatelessWidget {
               // group526fe (122:137)
               left: 234 * fem,
               top: 593 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
@@ -881,7 +886,7 @@ class DonorsPage extends StatelessWidget {
               // group31n4c (122:140)
               left: 78 * fem,
               top: 502.2902832031 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 95 * fem,
                 height: 38.25 * fem,
                 child: Stack(
@@ -929,22 +934,37 @@ class DonorsPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              // group477WC (142:138)
               left: 133 * fem,
               top: 780 * fem,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                ),
-                child: Container(
-                  width: 124 * fem,
-                  height: 52 * fem,
-                  decoration: BoxDecoration(
-                    color: Color(0xffff3737),
-                    borderRadius: BorderRadius.circular(20 * fem),
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to the desired page when "Save" is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Ailments()), // Replace 'YourPage' with the actual class name
+                  );
+                },
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Ailments()), // Replace 'YourPage' with the actual class name
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
                   ),
-                  child: Center(
+                  child: Container(
+                    width: 124 * fem,
+                    height: 52 * fem,
+                    decoration: BoxDecoration(
+                      color: Color(0xffff3737),
+                      borderRadius: BorderRadius.circular(20 * fem),
+                    ),
                     child: Center(
                       child: Text(
                         'Save',
@@ -977,7 +997,7 @@ class DonorsPage extends StatelessWidget {
                       fontSize: 14 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),

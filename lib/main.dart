@@ -3,7 +3,7 @@ import 'package:myapp/utils.dart';
 
 import 'package:myapp/page-1/sign-up.dart';
 import 'package:myapp/page-1/proper-button.dart';
-import 'package:myapp/page-1/blood-group.dart';
+import 'package:myapp/page-1/RecieveBG.dart';
 import 'package:myapp/page-1/DonorBG.dart';
 import 'package:myapp/page-1/thanks.dart';
 import 'package:myapp/page-1/login.dart';

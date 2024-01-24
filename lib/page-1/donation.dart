@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/ailments.dart';
 
-class DonationPage extends StatelessWidget {
+class DonationPage extends StatefulWidget {
+  const DonationPage({Key? key}) : super(key: key);
+  @override
+  State<DonationPage> createState() => _DonationPageState();
+}
+
+class _DonationPageState extends State<DonationPage> {
+  bool isButtonPressed = false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -675,7 +682,7 @@ class DonationPage extends StatelessWidget {
                 height: 37 * fem,
                 child: Stack(
                   children: [
-                    Positioned(
+                    /*Positioned(
                       // rectangle33kZr (I122:135;65:109)
                       left: 0 * fem,
                       top: 9 * fem,
@@ -687,6 +694,44 @@ class DonationPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20 * fem),
                               color: Color(0xffd9d9d9),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),*/
+
+                    Positioned(
+                      left: 0 * fem,
+                      top: 9 * fem,
+                      child: Align(
+                        child: SizedBox(
+                          width: 43 * fem,
+                          height: 18 * fem,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Toggle the button state on each click
+                              setState(() {
+                                isButtonPressed = !isButtonPressed;
+                              });
+                              print("Button pressed!\n");
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20 * fem),
+                              ),
+                              backgroundColor: isButtonPressed
+                                  ? Colors.red
+                                  : Color(0xffd9d9d9),
+                            ),
+                            child: Text(
+                              'A-',
+                              style: SafeGoogleFont(
+                                'Inknut Antiqua',
+                                fontSize: 14 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 2.5775 * ffem / fem,
+                                color: Color(0xff000000),
+                              ),
                             ),
                           ),
                         ),

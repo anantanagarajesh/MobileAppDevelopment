@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/Requestdetails.dart';
 import 'package:myapp/utils.dart';
 
-class Scene extends StatelessWidget {
+class PatientDetails extends StatefulWidget {
+  // Remove 'const' from the constructor since we have non-final fields
+  PatientDetails({Key? key}) : super(key: key);
+
+  @override
+  // Correct the state class name
+  _PatientDetailsState createState() => _PatientDetailsState();
+}
+
+class _PatientDetailsState extends State<PatientDetails> {
+  bool _isToggled = false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 393.0000305176;
@@ -110,7 +121,6 @@ class Scene extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      // vectorFLY (105:155)
                       left: 31 * fem,
                       top: 43 * fem,
                       child: Align(
@@ -118,7 +128,10 @@ class Scene extends StatelessWidget {
                           width: 11.88 * fem,
                           height: 19.84 * fem,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // Navigate back to the previous page
+                              Navigator.pop(context);
+                            },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
                             ),
@@ -194,7 +207,7 @@ class Scene extends StatelessWidget {
                           width: 16 * fem,
                           height: 20 * fem,
                           child: Image.asset(
-                            'assets/page-1/images/vector-68k.png',
+                            'assets/page-1/images/location.png',
                             width: 16 * fem,
                             height: 20 * fem,
                           ),
@@ -236,18 +249,18 @@ class Scene extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      // autogroupd22y3he (9DStVUxd93s5zLS489D22Y)
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 6.16 * fem),
-                      width: 19.8 * fem,
-                      height: 19.84 * fem,
-                      child: Image.asset(
-                        'assets/page-1/images/auto-group-d22y.png',
-                        width: 19.8 * fem,
-                        height: 19.84 * fem,
-                      ),
-                    ),
+                    // Container(
+                    //   // autogroupd22y3he (9DStVUxd93s5zLS489D22Y)
+                    //   margin: EdgeInsets.fromLTRB(
+                    //       0 * fem, 0 * fem, 0 * fem, 6.16 * fem),
+                    //   width: 19.8 * fem,
+                    //   height: 19.84 * fem,
+                    //   child: Image.asset(
+                    //     'assets/page-1/images/auto-group-d22y.png',
+                    //     width: 19.8 * fem,
+                    //     height: 19.84 * fem,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -273,7 +286,7 @@ class Scene extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -288,7 +301,7 @@ class Scene extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -303,7 +316,7 @@ class Scene extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -333,7 +346,7 @@ class Scene extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -348,7 +361,7 @@ class Scene extends StatelessWidget {
                           fontSize: 14 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
@@ -360,7 +373,7 @@ class Scene extends StatelessWidget {
                         fontSize: 14 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ],
@@ -382,7 +395,7 @@ class Scene extends StatelessWidget {
                       fontSize: 14 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -431,17 +444,36 @@ class Scene extends StatelessWidget {
               ),
             ),
             Positioned(
-              // vectorJjN (105:138)
               left: 319.6799316406 * fem,
               top: 661.4559326172 * fem,
               child: Align(
                 child: SizedBox(
                   width: 30.69 * fem,
                   height: 16.86 * fem,
-                  child: Image.asset(
-                    'assets/page-1/images/vector-r2Y.png',
-                    width: 30.69 * fem,
-                    height: 16.86 * fem,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isToggled = !_isToggled; // Toggle the state
+                      });
+                    },
+                    child: Material(
+                      borderRadius: BorderRadius.circular(
+                          8.0 * fem), // Customizable border radius
+                      color: _isToggled
+                          ? Colors.red
+                          : Colors.grey, // Change color based on toggle state
+                      child: Center(
+                        child: Text(
+                          _isToggled
+                              ? 'ON'
+                              : 'OFF', // Display text based on toggle state
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12.0 * fem, // Customizable font size
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -487,7 +519,6 @@ class Scene extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          // cancelnHA (105:153)
                           left: 16.4999084473 * fem,
                           top: 0 * fem,
                           child: Center(
@@ -495,15 +526,26 @@ class Scene extends StatelessWidget {
                               child: SizedBox(
                                 width: 91 * fem,
                                 height: 62 * fem,
-                                child: Text(
-                                  'Cancel',
-                                  textAlign: TextAlign.center,
-                                  style: SafeGoogleFont(
-                                    'Inknut Antiqua',
-                                    fontSize: 24 * ffem,
-                                    fontWeight: FontWeight.w400,
-                                    height: 2.5775 * ffem / fem,
-                                    color: Color(0xff000000),
+                                child: Material(
+                                  color: Colors
+                                      .transparent, // to avoid any additional coloring
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Center(
+                                      child: Text(
+                                        'Cancel',
+                                        textAlign: TextAlign.center,
+                                        style: SafeGoogleFont(
+                                          'Inknut Antiqua',
+                                          fontSize: 24 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 2.5775 * ffem / fem,
+                                          color: Color(0xff000000),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -517,11 +559,15 @@ class Scene extends StatelessWidget {
               ),
             ),
             Positioned(
-              // group47TeC (142:141)
               left: 46 * fem,
               top: 720 * fem,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Implement navigation logic here. Replace 'NextPage()' with the widget you want to navigate to.
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => RequestDetails()),
+                  );
+                },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
@@ -533,23 +579,58 @@ class Scene extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20 * fem),
                   ),
                   child: Center(
-                    child: Center(
-                      child: Text(
-                        'Next',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Inknut Antiqua',
-                          fontSize: 20 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
-                        ),
+                    child: Text(
+                      'Next',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        // Changed to TextStyle for simplicity
+                        fontFamily: 'Inknut Antiqua', // Specify the font family
+                        fontSize: 20 * ffem,
+                        fontWeight: FontWeight.w400,
+                        height: 2.5775 * ffem / fem,
+                        color: Color(0xffffffff),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
+
+            // Positioned(
+            //   // group47TeC (142:141)
+            //   left: 46 * fem,
+            //   top: 720 * fem,
+            //   child: TextButton(
+            //     onPressed: () {
+            //     },
+            //     style: TextButton.styleFrom(
+            //       padding: EdgeInsets.zero,
+            //     ),
+            //     child: Container(
+            //       width: 124 * fem,
+            //       height: 52 * fem,
+            //       decoration: BoxDecoration(
+            //         color: Color(0xffff3737),
+            //         borderRadius: BorderRadius.circular(20 * fem),
+            //       ),
+            //       child: Center(
+            //         child: Center(
+            //           child: Text(
+            //             'Next',
+            //             textAlign: TextAlign.center,
+            //             style: SafeGoogleFont(
+            //               'Inknut Antiqua',
+            //               fontSize: 20 * ffem,
+            //               fontWeight: FontWeight.w400,
+            //               height: 2.5775 * ffem / fem,
+            //               color: Color(0xffffffff),
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

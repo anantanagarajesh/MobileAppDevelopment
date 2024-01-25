@@ -10,7 +10,9 @@ class OccupationPage extends StatefulWidget {
 }
 
 class _OccupationPageState extends State<OccupationPage> {
-  bool _isButtonPressed = false;
+  bool _isButtonPressed1 = false;
+  bool _isButtonPressed2 = false;
+  bool _isButtonPressed3 = false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -44,7 +46,7 @@ class _OccupationPageState extends State<OccupationPage> {
                 height: 194.77 * fem,
                 decoration: BoxDecoration(
                   color: Color(0xffff3737),
-                  borderRadius: BorderRadius.circular(70 * fem),
+                  borderRadius: BorderRadius.circular(0 * fem),
                 ),
                 child: Center(
                   // whatdescribesyouthebestTbr (94:110)
@@ -257,8 +259,8 @@ class _OccupationPageState extends State<OccupationPage> {
                                 child: TextButton(
                                   onPressed: () {
                                     setState(() {
-                                      _isButtonPressed =
-                                          !_isButtonPressed; // Toggle the button state
+                                      _isButtonPressed3 =
+                                          !_isButtonPressed3; // Toggle the button state
                                     });
                                   },
                                   style: TextButton.styleFrom(
@@ -270,7 +272,7 @@ class _OccupationPageState extends State<OccupationPage> {
                                     width: 337 * fem,
                                     height: 46.94 * fem,
                                     decoration: BoxDecoration(
-                                      color: _isButtonPressed
+                                      color: _isButtonPressed3
                                           ? Color.fromARGB(255, 134, 232, 134)
                                           : Color(
                                               0xffff3737), // Change color based on flag

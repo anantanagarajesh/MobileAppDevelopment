@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:myapp/utils.dart';
 
 class Donors extends StatelessWidget {
@@ -39,7 +37,9 @@ class Donors extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(
                         0 * fem, 0 * fem, 20 * fem, 53 * fem),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                       ),
@@ -61,7 +61,7 @@ class Donors extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: SafeGoogleFont(
                         'Inknut Antiqua',
-                        fontSize: 32 * ffem,
+                        fontSize: 27 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
                         color: Color(0xffffffff),
@@ -106,9 +106,12 @@ class Donors extends StatelessWidget {
                         ),
                         Positioned(
                           // component146x (I90:203;90:151)
-                          left: 302 * fem,
+                          left: 304 * fem,
                           top: 0 * fem,
-                          child: Align(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
                             child: SizedBox(
                               width: 25 * fem,
                               height: 39.15 * fem,

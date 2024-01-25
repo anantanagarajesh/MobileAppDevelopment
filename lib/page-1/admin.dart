@@ -131,7 +131,7 @@ class Admin extends StatelessWidget {
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 15.94 * fem, 0 * fem, 0 * fem),
                         child: Text(
-                          'Login',
+                          'Admin Login',
                           textAlign: TextAlign.center,
                           style: SafeGoogleFont(
                             'Inknut Antiqua',

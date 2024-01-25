@@ -458,22 +458,22 @@ class _DonationPageState extends State<DonationPage> {
             //     ),
             //   ),
             // ),
-            Positioned(
-              // vectorwzU (122:125)
-              left: 24.5302734375 * fem,
-              top: 62 * fem,
-              child: Align(
-                child: SizedBox(
-                  width: 11.82 * fem,
-                  height: 21 * fem,
-                  child: Image.asset(
-                    'assets/page-1/images/vector-cfE.png',
-                    width: 11.82 * fem,
-                    height: 21 * fem,
-                  ),
-                ),
-              ),
-            ),
+            // Positioned(
+            //   // vectorwzU (122:125)
+            //   left: 24.5302734375 * fem,
+            //   top: 62 * fem,
+            //   child: Align(
+            //     child: SizedBox(
+            //       width: 11.82 * fem,
+            //       height: 21 * fem,
+            //       child: Image.asset(
+            //         'assets/page-1/images/vector-cfE.png',
+            //         width: 11.82 * fem,
+            //         height: 21 * fem,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Positioned(
               // frame26rLk (122:126)
               left: 0 * fem,
@@ -1183,21 +1183,45 @@ class _DonationPageState extends State<DonationPage> {
                       ),
                     ),
                     Positioned(
-                      // yrsDvc (122:141)
                       left: 17.3656005859 * fem,
                       top: 3.2097167969 * fem,
                       child: Align(
                         child: SizedBox(
                           width: 60 * fem,
                           height: 31 * fem,
-                          child: Text(
-                            '15-70 yrs',
-                            style: SafeGoogleFont(
-                              'Inknut Antiqua',
-                              fontSize: 12 * ffem,
-                              fontWeight: FontWeight.w400,
-                              height: 2.5775 * ffem / fem,
-                              color: Color(0xffffffff),
+                          child: Material(
+                            color: Colors
+                                .transparent, // Set the Material color to transparent to maintain the design
+                            child: TextFormField(
+                              style: TextStyle(
+                                fontFamily: 'Inknut Antiqua',
+                                fontSize: 12 * ffem,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffffffff), // Text color
+                              ),
+                              decoration: InputDecoration(
+                                hintText: "15-70",
+                                border:
+                                    InputBorder.none, // Removes the underline
+                                contentPadding:
+                                    EdgeInsets.zero, // Adjusts the padding
+                                // You might want to adjust the padding or other styles to match your design
+                              ),
+                              validator: (value) {
+                                // Add your validation logic here if needed
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter the age range';
+                                }
+                                final intValue = int.tryParse(value);
+                                if (intValue == null) {
+                                  return 'Please enter a valid number';
+                                }
+                                if (intValue < 15 || intValue > 70) {
+                                  return 'Age must be between 15 and 70';
+                                }
+                                return null;
+                                // Add more validation checks as needed
+                              },
                             ),
                           ),
                         ),

@@ -7,16 +7,11 @@ import 'package:myapp/page-1/thanks.dart';
 import 'package:myapp/page-1/login.dart';
 import 'package:myapp/page-1/opening-page.dart' as openingpage;
 import 'package:myapp/page-1/request.dart';
-import 'package:myapp/page-1/donation.dart' as donation;
-import 'package:myapp/page-1/ailments.dart' as ailments;
+import 'package:myapp/page-1/DonationPage.dart';
+import 'package:myapp/page-1/ailments.dart';
 import 'package:myapp/page-1/donors.dart';
 import 'package:myapp/page-1/donors-BqN.dart';
-import 'package:myapp/page-1/occupation.dart';
-import 'package:myapp/page-1/hospital.dart';
-import 'package:myapp/page-1/admin.dart';
-import 'package:myapp/components/ob-forms-only-3-months.dart';
-import 'package:myapp/components/ob-forms-name.dart';
-import 'package:myapp/components/ob-forms-occupation.dart';
+import 'package:myapp/page-1/Requestdetails.dart';
 
 void main() => runApp(MyApp());
 

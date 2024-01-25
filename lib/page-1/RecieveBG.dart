@@ -1,8 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/request.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/occupation.dart';
 
-class ReceiveBG extends StatelessWidget {
+class ReceiveBG extends StatefulWidget {
+  @override
+  _ReceiveBGState createState() => _ReceiveBGState();
+}
+
+class _ReceiveBGState extends State<ReceiveBG> {
+  String? selectedBloodGroup;
+  Widget bloodGroupButton(String bloodType) {
+    double baseWidth = 391;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
+    bool isSelected = selectedBloodGroup == bloodType;
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          selectedBloodGroup = isSelected ? null : bloodType;
+        });
+      },
+      style: TextButton.styleFrom(
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20 * fem),
+        ),
+        backgroundColor: isSelected ? Color(0xffff3737) : Color(0xffd9d9d9),
+      ),
+      child: Container(
+        width: 70 * fem,
+        height: 70 * fem,
+        alignment: Alignment.center,
+        child: Text(
+          bloodType,
+          style: SafeGoogleFont(
+            'Inknut Antiqua',
+            fontSize: 32 * ffem,
+            fontWeight: FontWeight.w400,
+            color: isSelected ? Colors.white : Color(0xff000000),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 391;
@@ -46,7 +88,7 @@ class ReceiveBG extends StatelessWidget {
                 top: 0 * fem,
                 child: Container(
                   padding:
-                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 75 * fem),
+                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
                   width: 391 * fem,
                   height: 844 * fem,
                   decoration: BoxDecoration(
@@ -63,24 +105,6 @@ class ReceiveBG extends StatelessWidget {
                         height: 296 * fem,
                         child: Stack(
                           children: [
-                            Positioned(
-                              // rectangle3t7v (17:8)
-                              left: 1 * fem,
-                              top: 0 * fem,
-                              child: Align(
-                                child: SizedBox(
-                                  width: 390 * fem,
-                                  height: 296 * fem,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(70 * fem),
-                                      color: Color(0xffff3737),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
                             Positioned(
                               // rectangle4C8c (40:126)
                               left: 0 * fem,
@@ -158,7 +182,7 @@ class ReceiveBG extends StatelessWidget {
                       Container(
                         // frame32G1z (90:245)
                         margin: EdgeInsets.fromLTRB(
-                            20 * fem, 0 * fem, 19 * fem, 0 * fem),
+                            20 * fem, 0 * fem, 20 * fem, 0 * fem),
                         width: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,7 +190,7 @@ class ReceiveBG extends StatelessWidget {
                             Container(
                               // group57zig (189:1553)
                               margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 0 * fem, 86.5 * fem),
+                                  50 * fem, 0 * fem, 0 * fem, 0 * fem),
                               width: double.infinity,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -174,7 +198,7 @@ class ReceiveBG extends StatelessWidget {
                                   Container(
                                     // autogroupmqtnXic (9DSpd1aKNMrMyhuHAkmQTn)
                                     margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 0 * fem, 18 * fem),
+                                        20 * fem, 0 * fem, 19 * fem, 0 * fem),
                                     width: double.infinity,
                                     height: 83 * fem,
                                     child: Row(
@@ -184,7 +208,7 @@ class ReceiveBG extends StatelessWidget {
                                         Container(
                                           // group1Fec (I189:1553;193:561)
                                           margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 24 * fem, 0 * fem),
+                                              0 * fem, 0 * fem, 0 * fem),
                                           child: TextButton(
                                             onPressed: () {},
                                             style: TextButton.styleFrom(
@@ -197,561 +221,6 @@ class ReceiveBG extends StatelessWidget {
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         20 * fem),
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  Positioned(
-                                                    // rectangle13Ytc (I189:1553;193:562)
-                                                    left: 0 * fem,
-                                                    top: 6.5 * fem,
-                                                    child: Align(
-                                                      child: SizedBox(
-                                                        width: 70 * fem,
-                                                        height: 70 * fem,
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20 *
-                                                                            fem),
-                                                            color: Color(
-                                                                0xffd9d9d9),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Positioned(
-                                                    // aGJp (I189:1553;193:563)
-                                                    left: 12.5 * fem,
-                                                    top: 0 * fem,
-                                                    child: Center(
-                                                      child: Align(
-                                                        child: SizedBox(
-                                                          width: 45 * fem,
-                                                          height: 83 * fem,
-                                                          child: Text(
-                                                            'A+',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style:
-                                                                SafeGoogleFont(
-                                                              'Inknut Antiqua',
-                                                              fontSize:
-                                                                  32 * ffem,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              height: 2.5775 *
-                                                                  ffem /
-                                                                  fem,
-                                                              color: Color(
-                                                                  0xff000000),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          // group6ZHv (I189:1553;193:537)
-                                          height: double.infinity,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20 * fem),
-                                          ),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              TextButton(
-                                                // group3hQ8 (I189:1553;193:538)
-                                                onPressed: () {},
-                                                style: TextButton.styleFrom(
-                                                  padding: EdgeInsets.zero,
-                                                ),
-                                                child: Container(
-                                                  width: 70 * fem,
-                                                  height: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20 * fem),
-                                                  ),
-                                                  child: Stack(
-                                                    children: [
-                                                      Positioned(
-                                                        // rectangle13jrc (I189:1553;193:539)
-                                                        left: 0 * fem,
-                                                        top: 6.5 * fem,
-                                                        child: Align(
-                                                          child: SizedBox(
-                                                            width: 70 * fem,
-                                                            height: 70 * fem,
-                                                            child: Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(20 *
-                                                                            fem),
-                                                                color: Color(
-                                                                    0xffd9d9d9),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                        // bEoN (I189:1553;193:540)
-                                                        left: 13.5 * fem,
-                                                        top: 0 * fem,
-                                                        child: Center(
-                                                          child: Align(
-                                                            child: SizedBox(
-                                                              width: 43 * fem,
-                                                              height: 83 * fem,
-                                                              child: Text(
-                                                                'B+',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    SafeGoogleFont(
-                                                                  'Inknut Antiqua',
-                                                                  fontSize:
-                                                                      32 * ffem,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  height:
-                                                                      2.5775 *
-                                                                          ffem /
-                                                                          fem,
-                                                                  color: Color(
-                                                                      0xff000000),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 24 * fem,
-                                              ),
-                                              TextButton(
-                                                // group47sA (I189:1553;193:541)
-                                                onPressed: () {},
-                                                style: TextButton.styleFrom(
-                                                  padding: EdgeInsets.zero,
-                                                ),
-                                                child: Container(
-                                                  width: 70 * fem,
-                                                  height: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20 * fem),
-                                                  ),
-                                                  child: Stack(
-                                                    children: [
-                                                      Positioned(
-                                                        // rectangle13eMJ (I189:1553;193:542)
-                                                        left: 0 * fem,
-                                                        top: 6.5 * fem,
-                                                        child: Align(
-                                                          child: SizedBox(
-                                                            width: 70 * fem,
-                                                            height: 70 * fem,
-                                                            child: Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(20 *
-                                                                            fem),
-                                                                color: Color(
-                                                                    0xffd9d9d9),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                        // okfE (I189:1553;193:543)
-                                                        left: 11.5 * fem,
-                                                        top: 0 * fem,
-                                                        child: Center(
-                                                          child: Align(
-                                                            child: SizedBox(
-                                                              width: 47 * fem,
-                                                              height: 83 * fem,
-                                                              child: Text(
-                                                                'O+',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    SafeGoogleFont(
-                                                                  'Inknut Antiqua',
-                                                                  fontSize:
-                                                                      32 * ffem,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  height:
-                                                                      2.5775 *
-                                                                          ffem /
-                                                                          fem,
-                                                                  color: Color(
-                                                                      0xff000000),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 24 * fem,
-                                              ),
-                                              Container(
-                                                // group5qRn (I189:1553;193:544)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0 * fem,
-                                                    6.5 * fem,
-                                                    0 * fem,
-                                                    6.5 * fem),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  style: TextButton.styleFrom(
-                                                    padding: EdgeInsets.zero,
-                                                  ),
-                                                  child: Container(
-                                                    width: 70 * fem,
-                                                    height: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xffd9d9d9),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20 * fem),
-                                                    ),
-                                                    child: Center(
-                                                      child: Center(
-                                                        child: Text(
-                                                          'AB+',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inknut Antiqua',
-                                                            fontSize: 20 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            height: 2.5775 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    // group7FVW (I189:1553;193:547)
-                                    width: double.infinity,
-                                    height: 83 * fem,
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        TextButton(
-                                          // frame48zCC (I189:1553;193:548)
-                                          onPressed: () {},
-                                          style: TextButton.styleFrom(
-                                            padding: EdgeInsets.zero,
-                                          ),
-                                          child: Container(
-                                            width: 70 * fem,
-                                            height: double.infinity,
-                                            child: Container(
-                                              // group1j9n (I189:1553;193:549)
-                                              width: double.infinity,
-                                              height: double.infinity,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20 * fem),
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  Positioned(
-                                                    // rectangle13GQc (I189:1553;193:550)
-                                                    left: 0 * fem,
-                                                    top: 6.5 * fem,
-                                                    child: Align(
-                                                      child: SizedBox(
-                                                        width: 70 * fem,
-                                                        height: 70 * fem,
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20 *
-                                                                            fem),
-                                                            color: Color(
-                                                                0xffd9d9d9),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Positioned(
-                                                    // aypp (I189:1553;193:551)
-                                                    left: 12.5 * fem,
-                                                    top: 0 * fem,
-                                                    child: Center(
-                                                      child: Align(
-                                                        child: SizedBox(
-                                                          width: 45 * fem,
-                                                          height: 83 * fem,
-                                                          child: Text(
-                                                            'A-',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style:
-                                                                SafeGoogleFont(
-                                                              'Inknut Antiqua',
-                                                              fontSize:
-                                                                  32 * ffem,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              height: 2.5775 *
-                                                                  ffem /
-                                                                  fem,
-                                                              color: Color(
-                                                                  0xff000000),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 24 * fem,
-                                        ),
-                                        TextButton(
-                                          // group3STW (I189:1553;193:552)
-                                          onPressed: () {},
-                                          style: TextButton.styleFrom(
-                                            padding: EdgeInsets.zero,
-                                          ),
-                                          child: Container(
-                                            width: 70 * fem,
-                                            height: double.infinity,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      20 * fem),
-                                            ),
-                                            child: Stack(
-                                              children: [
-                                                Positioned(
-                                                  // rectangle13Nrx (I189:1553;193:553)
-                                                  left: 0 * fem,
-                                                  top: 6.5 * fem,
-                                                  child: Align(
-                                                    child: SizedBox(
-                                                      width: 70 * fem,
-                                                      height: 70 * fem,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20 * fem),
-                                                          color:
-                                                              Color(0xffd9d9d9),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Positioned(
-                                                  // bgse (I189:1553;193:554)
-                                                  left: 14 * fem,
-                                                  top: 0 * fem,
-                                                  child: Center(
-                                                    child: Align(
-                                                      child: SizedBox(
-                                                        width: 42 * fem,
-                                                        height: 83 * fem,
-                                                        child: Text(
-                                                          'B-',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inknut Antiqua',
-                                                            fontSize: 32 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            height: 2.5775 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 24 * fem,
-                                        ),
-                                        TextButton(
-                                          // group4meC (I189:1553;193:555)
-                                          onPressed: () {},
-                                          style: TextButton.styleFrom(
-                                            padding: EdgeInsets.zero,
-                                          ),
-                                          child: Container(
-                                            width: 70 * fem,
-                                            height: double.infinity,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      20 * fem),
-                                            ),
-                                            child: Stack(
-                                              children: [
-                                                Positioned(
-                                                  // rectangle13Je8 (I189:1553;193:556)
-                                                  left: 0 * fem,
-                                                  top: 6.5 * fem,
-                                                  child: Align(
-                                                    child: SizedBox(
-                                                      width: 70 * fem,
-                                                      height: 70 * fem,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20 * fem),
-                                                          color:
-                                                              Color(0xffd9d9d9),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Positioned(
-                                                  // oDm6 (I189:1553;193:557)
-                                                  left: 11.5 * fem,
-                                                  top: 0 * fem,
-                                                  child: Center(
-                                                    child: Align(
-                                                      child: SizedBox(
-                                                        width: 47 * fem,
-                                                        height: 83 * fem,
-                                                        child: Text(
-                                                          'O-',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inknut Antiqua',
-                                                            fontSize: 32 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            height: 2.5775 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 24 * fem,
-                                        ),
-                                        Container(
-                                          // group56Zz (I189:1553;193:558)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              6.5 * fem, 0 * fem, 6.5 * fem),
-                                          child: TextButton(
-                                            onPressed: () {},
-                                            style: TextButton.styleFrom(
-                                              padding: EdgeInsets.zero,
-                                            ),
-                                            child: Container(
-                                              width: 70 * fem,
-                                              height: double.infinity,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffd9d9d9),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20 * fem),
-                                              ),
-                                              child: Center(
-                                                child: Center(
-                                                  child: Text(
-                                                    'AB-',
-                                                    textAlign: TextAlign.center,
-                                                    style: SafeGoogleFont(
-                                                      'Inknut Antiqua',
-                                                      fontSize: 20 * ffem,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      height:
-                                                          2.5775 * ffem / fem,
-                                                      color: Color(0xff000000),
-                                                    ),
-                                                  ),
-                                                ),
                                               ),
                                             ),
                                           ),
@@ -762,10 +231,34 @@ class ReceiveBG extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            Positioned(
+                                top: 300 *
+                                    fem, // You can adjust this value to move the buttons up
+                                left: 0,
+                                right: 0,
+                                child: Container(
+                                  // margin: EdgeInsets.fromLTRB(20 * fem, 0, 19 * fem, 0),
+                                  child: Wrap(
+                                    spacing:
+                                        25, // Space between horizontal buttons
+                                    runSpacing:
+                                        15, // Space between lines of buttons
+                                    children: [
+                                      bloodGroupButton('A+'),
+                                      bloodGroupButton('B+'),
+                                      bloodGroupButton('O+'),
+                                      bloodGroupButton('AB+'),
+                                      bloodGroupButton('A-'),
+                                      bloodGroupButton('B-'),
+                                      bloodGroupButton('O-'),
+                                      bloodGroupButton('AB-'),
+                                    ],
+                                  ),
+                                )),
                             Container(
                               // group55MF2 (157:258)
                               margin: EdgeInsets.fromLTRB(
-                                  68 * fem, 0 * fem, 69 * fem, 0 * fem),
+                                  0 * fem, 20 * fem, 0 * fem, 0 * fem),
                               width: double.infinity,
                               height: 83 * fem,
                               decoration: BoxDecoration(
@@ -774,50 +267,44 @@ class ReceiveBG extends StatelessWidget {
                               child: Stack(
                                 children: [
                                   Positioned(
-                                    // rectangle14sUG (157:169)
-                                    left: 0 * fem,
-                                    top: 6 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 215 * fem,
-                                        height: 70 * fem,
-                                        child: TextButton(
-                                          onPressed: () {},
-                                          style: TextButton.styleFrom(
-                                            padding: EdgeInsets.zero,
-                                          ),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      20 * fem),
-                                              color: Color(0xffff3737),
-                                            ),
-                                          ),
+                                    top: 20 *
+                                        fem, // Adjust the top property as needed to place the button
+                                    bottom: 0 * fem, // This is an example value
+                                    left: 50 *
+                                        fem, // Center the button horizontally
+                                    right: 50 * fem,
+                                    child: ElevatedButton(
+                                      onPressed: selectedBloodGroup != null
+                                          ? () {
+                                              // Handle the request logic here
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        PatientDetails()), // Replace with your target page
+                                              );
+                                            }
+                                          : null, // Button is disabled if no blood group is selected
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Color(
+                                            0xffff3737), // Button background color
+                                        disabledBackgroundColor: Color.fromARGB(
+                                            255,
+                                            236,
+                                            135,
+                                            135), // Button disabled color
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20 * fem),
                                         ),
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 20 * fem),
                                       ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    // receivexkc (157:170)
-                                    left: 44 * fem,
-                                    top: 0 * fem,
-                                    child: Center(
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 139 * fem,
-                                          height: 83 * fem,
-                                          child: Text(
-                                            'Receive',
-                                            textAlign: TextAlign.center,
-                                            style: SafeGoogleFont(
-                                              'Inknut Antiqua',
-                                              fontSize: 32 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 2.5775 * ffem / fem,
-                                              color: Color(0xff000000),
-                                            ),
-                                          ),
+                                      child: Text(
+                                        'Request',
+                                        style: TextStyle(
+                                          fontSize: 24 * ffem,
+                                          color: Colors.white,
                                         ),
                                       ),
                                     ),

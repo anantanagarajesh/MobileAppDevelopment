@@ -1,16 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/donors-BqN.dart';
+import 'package:myapp/page-1/donors.dart';
 import 'package:myapp/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class Scene extends StatelessWidget {
+class hospital2 extends StatelessWidget {
+  // Define a method to launch URLs
+  void _launchURL() async {
+    final Uri url = Uri.parse(
+        'https://www.google.com/maps'); // Parse the URL into a Uri object
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390.0000305176;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+
+    // Function to create text field decoration
+    InputDecoration textFieldDecoration(String label) {
+      return InputDecoration(
+        labelText: label,
+        fillColor: Color(0xffd9d9d9),
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20 * fem),
+          borderSide: BorderSide.none,
+        ),
+        labelStyle: SafeGoogleFont(
+          'Inknut Antiqua',
+          fontSize: 20 * ffem,
+          fontWeight: FontWeight.w400,
+          height: 2.5775 * ffem / fem,
+          color: Color(0xff555555), // Changed to a darker color for visibility
+        ),
+      );
+    }
+
     return SizedBox(
       width: double.infinity,
       child: SizedBox(
-        // hospitalUHr (142:172)
         width: double.infinity,
         height: 844 * fem,
         child: Stack(
@@ -23,23 +57,29 @@ class Scene extends StatelessWidget {
                 child: SizedBox(
                   width: 390 * fem,
                   height: 844 * fem,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(70 * fem),
-                      color: Color(0xfffffefe),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(70 * fem),
+                    color: Color(
+                        0xfffffefe), // Assuming this is the color you want for the material
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(70 * fem),
+                        color: Color(0xfffffefe),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
+
             Positioned(
-              // maskgroupihz (142:122)
               left: 26 * fem,
               top: 452 * fem,
-              child: Align(
-                child: SizedBox(
-                  width: 344 * fem,
-                  height: 141 * fem,
+              child: Material(
+                color: Colors
+                    .transparent, // Use a transparent color to maintain the image visibility
+                child: InkWell(
+                  onTap: _launchURL, // Add the launch URL function here
                   child: Image.asset(
                     'assets/page-1/images/mask-group-E36.png',
                     width: 344 * fem,
@@ -63,7 +103,7 @@ class Scene extends StatelessWidget {
                       fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -84,7 +124,7 @@ class Scene extends StatelessWidget {
                       fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
@@ -105,52 +145,58 @@ class Scene extends StatelessWidget {
                       fontSize: 20 * ffem,
                       fontWeight: FontWeight.w400,
                       height: 2.5775 * ffem / fem,
-                      color: Color(0xffffffff),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
               ),
             ),
             Positioned(
-              // rectangle1966G (142:114)
               left: 26.5 * fem,
               top: 257 * fem,
-              child: Align(
-                child: SizedBox(
+              child: Material(
+                elevation:
+                    0, // You can adjust this value for shadow effect if you want
+                borderRadius: BorderRadius.circular(20 * fem),
+                child: Container(
                   width: 337 * fem,
                   height: 46.94 * fem,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20 * fem),
-                      color: Color(0xffd9d9d9),
-                    ),
+                  child: TextField(
+                    decoration: textFieldDecoration('Hospital Name'),
                   ),
                 ),
               ),
             ),
+
+            // Replace Positioned container with a TextField for doctor name
             Positioned(
-              // rectangle20oFa (142:117)
               left: 29 * fem,
               top: 353 * fem,
-              child: Align(
-                child: SizedBox(
+              child: Material(
+                borderRadius: BorderRadius.circular(
+                    20 * fem), // Set border radius for Material
+                color: Colors
+                    .transparent, // Assuming you want to keep the container color
+                child: Container(
                   width: 337 * fem,
                   height: 46.94 * fem,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20 * fem),
-                      color: Color(0xffd9d9d9),
-                    ),
+                  child: TextField(
+                    decoration: textFieldDecoration('Doctor Name'),
                   ),
                 ),
               ),
             ),
+
             Positioned(
               // group46Wfn (142:129)
               left: 133 * fem,
               top: 760 * fem,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Donors()),
+                  );
+                },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
@@ -241,7 +287,9 @@ class Scene extends StatelessWidget {
                           width: 12 * fem,
                           height: 20 * fem,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
                             ),

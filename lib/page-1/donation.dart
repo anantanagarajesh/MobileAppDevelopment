@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/ailments.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DonationPage extends StatefulWidget {
-  const DonationPage({Key? key}) : super(key: key);
   @override
-  State<DonationPage> createState() => _DonationPageState();
+  _DonationPageState createState() => _DonationPageState();
 }
 
 class _DonationPageState extends State<DonationPage> {
-  bool isButtonPressed = false;
+  // Declare your state variables here
+  bool isButtonPressed1 = false;
+  bool isButtonPressed2 = false;
+  bool isButtonPressed3 = false;
+  bool isButtonPressed4 = false;
+  bool isButtonPressed5 = false;
+  bool isButtonPressed6 = false;
+  bool isButtonPressed7 = false;
+  bool isButtonPressed8 = false;
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -77,23 +86,36 @@ class _DonationPageState extends State<DonationPage> {
                       // group186dA (122:106)
                       left: 0 * fem,
                       top: 0 * fem,
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(
-                            12 * fem, 4.5 * fem, 12 * fem, 4.5 * fem),
-                        width: 337 * fem,
-                        height: 40 * fem,
-                        decoration: BoxDecoration(
-                          color: Color(0xffd9d9d9),
-                          borderRadius: BorderRadius.circular(20 * fem),
-                        ),
-                        child: Text(
-                          'Type your name',
-                          style: SafeGoogleFont(
-                            'Inknut Antiqua',
-                            fontSize: 12 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 2.5775 * ffem / fem,
-                            color: Color(0xffffffff),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20 * fem),
+                        color: Color(0xffd9d9d9),
+                        child: SizedBox(
+                          width: 337 * fem,
+                          height: 40 * fem,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Type your name',
+                              hintStyle: TextStyle(
+                                color: Colors.grey, // Placeholder text color
+                                fontSize: 12 *
+                                    ffem, // You can adjust the size as needed
+                              ),
+                              filled: true,
+                              fillColor: Color(0xffd9d9d9),
+                              contentPadding: EdgeInsets.fromLTRB(
+                                  12 * fem, 4.5 * fem, 12 * fem, 4.5 * fem),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20 * fem),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                            style: SafeGoogleFont(
+                              'Inknut Antiqua',
+                              fontSize: 12 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 2.5775 * ffem / fem,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
                           ),
                         ),
                       ),
@@ -157,14 +179,32 @@ class _DonationPageState extends State<DonationPage> {
                         child: SizedBox(
                           width: 136 * fem,
                           height: 31 * fem,
-                          child: Text(
-                            '+91-XXXXXXXXXX',
-                            style: SafeGoogleFont(
-                              'Inknut Antiqua',
-                              fontSize: 12 * ffem,
-                              fontWeight: FontWeight.w400,
-                              height: 2.5775 * ffem / fem,
-                              color: Color(0xffffffff),
+                          child: Material(
+                            color: Colors
+                                .transparent, // Assuming you want to keep the background transparent
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: '+91-XXXXXXXXXX',
+                                hintStyle: TextStyle(
+                                  color: const Color.fromARGB(255, 98, 97, 97)
+                                      .withOpacity(
+                                          0.5), // Placeholder text color (adjust opacity as needed)
+                                  fontSize: 12 * ffem,
+                                ),
+                                border: InputBorder
+                                    .none, // No border to the TextField
+                                contentPadding:
+                                    EdgeInsets.zero, // Adjust padding if needed
+                              ),
+                              style: SafeGoogleFont(
+                                'Inknut Antiqua',
+                                fontSize: 12 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 2.5775 * ffem / fem,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                              keyboardType: TextInputType
+                                  .phone, // Set keyboard type for phone input
                             ),
                           ),
                         ),
@@ -178,14 +218,33 @@ class _DonationPageState extends State<DonationPage> {
                         child: SizedBox(
                           width: 68 * fem,
                           height: 31 * fem,
-                          child: Text(
-                            '02/12/2022',
-                            style: SafeGoogleFont(
-                              'Inknut Antiqua',
-                              fontSize: 12 * ffem,
-                              fontWeight: FontWeight.w400,
-                              height: 2.5775 * ffem / fem,
-                              color: Color(0xffffffff),
+                          child: Material(
+                            color: Colors
+                                .transparent, // Assuming you want to keep the background transparent
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: '02/12/2022',
+                                hintStyle: TextStyle(
+                                  color: const Color.fromARGB(255, 100, 99, 99)
+                                      .withOpacity(
+                                          0.5), // Placeholder text color (adjust opacity as needed)
+                                  fontSize: 12 * ffem,
+                                ),
+                                border: InputBorder
+                                    .none, // No border to the TextField
+                                contentPadding:
+                                    EdgeInsets.zero, // Adjust padding if needed
+                              ),
+                              style: SafeGoogleFont(
+                                'Inknut Antiqua',
+                                fontSize: 12 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 2.5775 * ffem / fem,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                              keyboardType: TextInputType
+                                  .datetime, // Set keyboard type for date input
+                              // Since we don't have a controller and logic to handle date picking, this is just a simple TextField
                             ),
                           ),
                         ),
@@ -200,15 +259,43 @@ class _DonationPageState extends State<DonationPage> {
                           child: SizedBox(
                             width: 119 * fem,
                             height: 31 * fem,
-                            child: Text(
-                              'Enter your weight',
-                              textAlign: TextAlign.center,
-                              style: SafeGoogleFont(
-                                'Inknut Antiqua',
-                                fontSize: 12 * ffem,
-                                fontWeight: FontWeight.w400,
-                                height: 2.5775 * ffem / fem,
-                                color: Color(0xffffffff),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(
+                                  20 * fem), // Adjust as needed for your design
+                              color: Colors
+                                  .transparent, // Assuming you want to keep the background transparent
+                              child: TextField(
+                                keyboardType: TextInputType
+                                    .number, // Ensures numeric input for weight
+                                decoration: InputDecoration(
+                                  hintText: 'Enter weight',
+                                  hintStyle: TextStyle(
+                                    color: Color.fromARGB(255, 107, 106, 106)
+                                        .withOpacity(
+                                            0.5), // Placeholder text color (adjust opacity as needed)
+                                    fontSize: 12 * ffem,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(20 * fem),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 10 * fem,
+                                      vertical: 8 *
+                                          fem), // Adjust padding to match your design
+                                  filled: true,
+                                  fillColor: Color(
+                                      0xffd9d9d9), // Background color of the field
+                                ),
+                                style: SafeGoogleFont(
+                                  'Inknut Antiqua',
+                                  fontSize: 12 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 2.5775 * ffem / fem,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                // Since we don't have a controller and logic to handle the input, this is just a simple TextField
                               ),
                             ),
                           ),
@@ -335,14 +422,42 @@ class _DonationPageState extends State<DonationPage> {
                 child: SizedBox(
                   width: 344 * fem,
                   height: 104 * fem,
-                  child: Image.asset(
-                    'assets/page-1/images/mask-group.png',
-                    width: 344 * fem,
-                    height: 104 * fem,
+                  child: GestureDetector(
+                    onTap: () async {
+                      const urlString =
+                          'hhttps://www.google.com/maps/@12.9322864,77.5733936,15z?entry=ttu'; // Replace with your desired URL
+                      final Uri url = Uri.parse(urlString);
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
+                      } else {
+                        throw 'Could not launch $urlString';
+                      }
+                    },
+                    child: Image.asset(
+                      'assets/page-1/images/mask-group.png',
+                      width: 344 * fem,
+                      height: 104 * fem,
+                    ),
                   ),
                 ),
               ),
             ),
+            // Positioned(
+            //   // maskgroupqwS (122:122)
+            //   left: 27 * fem,
+            //   top: 652 * fem,
+            //   child: Align(
+            //     child: SizedBox(
+            //       width: 344 * fem,
+            //       height: 104 * fem,
+            //       child: Image.asset(
+            //         'assets/page-1/images/mask-group.png',
+            //         width: 344 * fem,
+            //         height: 104 * fem,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Positioned(
               // vectorwzU (122:125)
               left: 24.5302734375 * fem,
@@ -682,24 +797,6 @@ class _DonationPageState extends State<DonationPage> {
                 height: 37 * fem,
                 child: Stack(
                   children: [
-                    /*Positioned(
-                      // rectangle33kZr (I122:135;65:109)
-                      left: 0 * fem,
-                      top: 9 * fem,
-                      child: Align(
-                        child: SizedBox(
-                          width: 43 * fem,
-                          height: 18 * fem,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20 * fem),
-                              color: Color(0xffd9d9d9),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),*/
-
                     Positioned(
                       left: 0 * fem,
                       top: 9 * fem,
@@ -711,22 +808,23 @@ class _DonationPageState extends State<DonationPage> {
                             onPressed: () {
                               // Toggle the button state on each click
                               setState(() {
-                                isButtonPressed = !isButtonPressed;
+                                isButtonPressed1 = !isButtonPressed1;
                               });
                               print("Button pressed!\n");
                             },
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: isButtonPressed1
+                                  ? Colors.red
+                                  : Color(0xffd9d9d9), // Background color
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20 * fem),
                               ),
-                              backgroundColor: isButtonPressed
-                                  ? Colors.red
-                                  : Color(0xffd9d9d9),
                             ),
                             child: Text(
-                              'A-',
-                              style: SafeGoogleFont(
-                                'Inknut Antiqua',
+                              'A+',
+                              style: TextStyle(
+                                // Replace SafeGoogleFont with TextStyle for simplicity
+                                fontFamily: 'Inknut Antiqua',
                                 fontSize: 14 * ffem,
                                 fontWeight: FontWeight.w400,
                                 height: 2.5775 * ffem / fem,
@@ -737,6 +835,43 @@ class _DonationPageState extends State<DonationPage> {
                         ),
                       ),
                     ),
+                    // Positioned(
+                    //   left: 0 * fem,
+                    //   top: 9 * fem,
+                    //   child: Align(
+                    //     child: SizedBox(
+                    //       width: 43 * fem,
+                    //       height: 18 * fem,
+                    //       child: ElevatedButton(
+                    //         onPressed: () {
+                    //           // Toggle the button state on each click
+                    //           setState(() {
+                    //             isButtonPressed5 = !isButtonPressed5;
+                    //           });
+                    //           print("Button pressed!\n");
+                    //         },
+                    //         style: ElevatedButton.styleFrom(
+                    //           shape: RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(20 * fem),
+                    //           ),
+                    //           backgroundColor: isButtonPressed5
+                    //               ? Colors.red
+                    //               : Color(0xffd9d9d9),
+                    //         ),
+                    //         child: Text(
+                    //           'A-',
+                    //           style: SafeGoogleFont(
+                    //             'Inknut Antiqua',
+                    //             fontSize: 14 * ffem,
+                    //             fontWeight: FontWeight.w400,
+                    //             height: 2.5775 * ffem / fem,
+                    //             color: Color(0xff000000),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     Positioned(
                       // aFWc (I122:135;65:110)
                       left: 11.5 * fem,
@@ -766,7 +901,7 @@ class _DonationPageState extends State<DonationPage> {
               ),
             ),
             Positioned(
-              // group51MJk (122:136)
+              // group50DZv (122:135)
               left: 143 * fem,
               top: 593 * fem,
               child: SizedBox(
@@ -775,30 +910,50 @@ class _DonationPageState extends State<DonationPage> {
                 child: Stack(
                   children: [
                     Positioned(
-                      // rectangle33UuA (I122:136;65:109)
                       left: 0 * fem,
                       top: 9 * fem,
                       child: Align(
                         child: SizedBox(
                           width: 43 * fem,
                           height: 18 * fem,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20 * fem),
-                              color: Color(0xffd9d9d9),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Toggle the button state on each click
+                              setState(() {
+                                isButtonPressed6 = !isButtonPressed6;
+                              });
+                              print("Button pressed!\n");
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20 * fem),
+                              ),
+                              backgroundColor: isButtonPressed6
+                                  ? Colors.red
+                                  : Color(0xffd9d9d9),
+                            ),
+                            child: Text(
+                              'B-',
+                              style: SafeGoogleFont(
+                                'Inknut Antiqua',
+                                fontSize: 14 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 2.5775 * ffem / fem,
+                                color: Color(0xff000000),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      // azsW (I122:136;65:110)
-                      left: 12 * fem,
+                      // aFWc (I122:135;65:110)
+                      left: 11.5 * fem,
                       top: 0 * fem,
                       child: Center(
                         child: Align(
                           child: SizedBox(
-                            width: 19 * fem,
+                            width: 20 * fem,
                             height: 37 * fem,
                             child: Text(
                               'B-',
@@ -874,34 +1029,54 @@ class _DonationPageState extends State<DonationPage> {
               ),
             ),
             Positioned(
-              // group533zC (122:138)
+              // group50DZv (122:135)
               left: 321 * fem,
               top: 593 * fem,
-              child: Container(
+              child: SizedBox(
                 width: 43 * fem,
                 height: 37 * fem,
                 child: Stack(
                   children: [
                     Positioned(
-                      // rectangle33yN4 (I122:138;65:109)
                       left: 0 * fem,
                       top: 9 * fem,
                       child: Align(
                         child: SizedBox(
                           width: 43 * fem,
                           height: 18 * fem,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20 * fem),
-                              color: Color(0xffd9d9d9),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Toggle the button state on each click
+                              setState(() {
+                                isButtonPressed8 = !isButtonPressed8;
+                              });
+                              print("Button pressed!\n");
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20 * fem),
+                              ),
+                              backgroundColor: isButtonPressed8
+                                  ? Colors.red
+                                  : Color(0xffd9d9d9),
+                            ),
+                            child: Text(
+                              'AB-',
+                              style: SafeGoogleFont(
+                                'Inknut Antiqua',
+                                fontSize: 14 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 2.5775 * ffem / fem,
+                                color: Color(0xff000000),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      // atV2 (I122:138;65:110)
-                      left: 6 * fem,
+                      // aFWc (I122:135;65:110)
+                      left: 11.5 * fem,
                       top: 0 * fem,
                       child: Center(
                         child: Align(
@@ -927,6 +1102,60 @@ class _DonationPageState extends State<DonationPage> {
                 ),
               ),
             ),
+            // Positioned(
+            //   // group533zC (122:138)
+            //   left: 321 * fem,
+            //   top: 593 * fem,
+            //   child: Container(
+            //     width: 43 * fem,
+            //     height: 37 * fem,
+            //     child: Stack(
+            //       children: [
+            //         Positioned(
+            //           // rectangle33yN4 (I122:138;65:109)
+            //           left: 0 * fem,
+            //           top: 9 * fem,
+            //           child: Align(
+            //             child: SizedBox(
+            //               width: 43 * fem,
+            //               height: 18 * fem,
+            //               child: Container(
+            //                 decoration: BoxDecoration(
+            //                   borderRadius: BorderRadius.circular(20 * fem),
+            //                   color: Color(0xffd9d9d9),
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //         Positioned(
+            //           // atV2 (I122:138;65:110)
+            //           left: 6 * fem,
+            //           top: 0 * fem,
+            //           child: Center(
+            //             child: Align(
+            //               child: SizedBox(
+            //                 width: 31 * fem,
+            //                 height: 37 * fem,
+            //                 child: Text(
+            //                   'AB-',
+            //                   textAlign: TextAlign.center,
+            //                   style: SafeGoogleFont(
+            //                     'Inknut Antiqua',
+            //                     fontSize: 14 * ffem,
+            //                     fontWeight: FontWeight.w400,
+            //                     height: 2.5775 * ffem / fem,
+            //                     color: Color(0xff000000),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Positioned(
               // group31n4c (122:140)
               left: 78 * fem,

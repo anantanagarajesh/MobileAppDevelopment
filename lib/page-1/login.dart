@@ -3,6 +3,7 @@ import 'package:myapp/page-1/DonorBG.dart'; //on clicking login
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/sign-up.dart'; //on clicking create account
 import 'package:myapp/page-1/occupation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -156,33 +157,31 @@ class Login extends StatelessWidget {
                 child: SizedBox(
                   width: 337 * fem,
                   height: 46.94 * fem,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20 * fem),
-                      color: Color(0xffd9d9d9),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              // examplegmailcomaRa (45:9)
-              left: 39 * fem,
-              top: 269.6497116089 * fem,
-              child: Center(
-                child: Align(
-                  child: SizedBox(
-                    width: 235 * fem,
-                    height: 52 * fem,
-                    child: Text(
-                      'example@gmail.com',
-                      textAlign: TextAlign.center,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20 * fem),
+                    color: Color(0xffd9d9d9),
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: "Email",
+                        hintStyle: TextStyle(
+                          color: Colors.grey, // Adjust the color as needed
+                        ),
+                        filled: true,
+                        fillColor: Color(0xffd9d9d9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20 * fem),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 20 * fem, vertical: 10 * fem),
+                      ),
                       style: SafeGoogleFont(
                         'Inknut Antiqua',
                         fontSize: 20 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -194,36 +193,31 @@ class Login extends StatelessWidget {
               left: 24 * fem,
               top: 375.5550231934 * fem,
               child: Align(
-                child: SizedBox(
-                  width: 337 * fem,
-                  height: 46.94 * fem,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20 * fem),
-                      color: Color(0xffd9d9d9),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              // passwordmFA (45:8)
-              left: 39 * fem,
-              top: 370.5301742554 * fem,
-              child: Center(
-                child: Align(
+                child: Material(
+                  // Wrap the TextField with a Material widget
                   child: SizedBox(
-                    width: 105 * fem,
-                    height: 52 * fem,
-                    child: Text(
-                      'password',
-                      textAlign: TextAlign.center,
+                    width: 337 * fem,
+                    height: 46.94 * fem,
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                        hintStyle: TextStyle(
+                          color: Colors.grey, // Adjust the color as needed
+                        ),
+                        filled: true,
+                        fillColor: Color(0xffd9d9d9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20 * fem),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
                       style: SafeGoogleFont(
                         'Inknut Antiqua',
                         fontSize: 20 * ffem,
                         fontWeight: FontWeight.w400,
                         height: 2.5775 * ffem / fem,
-                        color: Color(0xffffffff),
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
@@ -273,7 +267,7 @@ class Login extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SignUpPage()), // Replace 'SignUpPage' with the actual class name
+                                    SignUp()), // Replace 'SignUpPage' with the actual class name
                           );
                         },
                         style: TextButton.styleFrom(

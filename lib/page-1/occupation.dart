@@ -4,7 +4,13 @@ import 'package:myapp/page-1/login.dart';
 import 'package:myapp/page-1/RecieveBG.dart';
 import 'package:myapp/page-1/admin.dart';
 
-class OccupationPage extends StatelessWidget {
+class OccupationPage extends StatefulWidget {
+  @override
+  _OccupationPageState createState() => _OccupationPageState();
+}
+
+class _OccupationPageState extends State<OccupationPage> {
+  bool _isButtonPressed = false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -246,11 +252,15 @@ class OccupationPage extends StatelessWidget {
                           child: Stack(
                             children: [
                               Positioned(
-                                // component7dic (I168:204;168:151)
                                 left: 0 * fem,
                                 top: 3.0307693481 * fem,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      _isButtonPressed =
+                                          !_isButtonPressed; // Toggle the button state
+                                    });
+                                  },
                                   style: TextButton.styleFrom(
                                     padding: EdgeInsets.zero,
                                   ),
@@ -260,12 +270,14 @@ class OccupationPage extends StatelessWidget {
                                     width: 337 * fem,
                                     height: 46.94 * fem,
                                     decoration: BoxDecoration(
-                                      color: Color(0xffff3737),
+                                      color: _isButtonPressed
+                                          ? Color.fromARGB(255, 134, 232, 134)
+                                          : Color(
+                                              0xffff3737), // Change color based on flag
                                       borderRadius:
                                           BorderRadius.circular(20 * fem),
                                     ),
                                     child: Align(
-                                      // ellipse36s6 (I168:204;168:151;94:113)
                                       alignment: Alignment.centerLeft,
                                       child: SizedBox(
                                         width: 20 * fem,
@@ -282,22 +294,70 @@ class OccupationPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              // Positioned(
+                              //   // component7dic (I168:204;168:151)
+                              //   left: 0 * fem,
+                              //   top: 3.0307693481 * fem,
+                              //   child: TextButton(
+                              //     onPressed: () {},
+                              //     style: TextButton.styleFrom(
+                              //       padding: EdgeInsets.zero,
+                              //     ),
+                              //     child: Container(
+                              //       padding: EdgeInsets.fromLTRB(11 * fem,
+                              //           13 * fem, 11 * fem, 13.94 * fem),
+                              //       width: 337 * fem,
+                              //       height: 46.94 * fem,
+                              //       decoration: BoxDecoration(
+                              //         color: Color(0xffff3737),
+                              //         borderRadius:
+                              //             BorderRadius.circular(20 * fem),
+                              //       ),
+                              //       child: Align(
+                              //         // ellipse36s6 (I168:204;168:151;94:113)
+                              //         alignment: Alignment.centerLeft,
+                              //         child: SizedBox(
+                              //           width: 20 * fem,
+                              //           height: 20 * fem,
+                              //           child: Container(
+                              //             decoration: BoxDecoration(
+                              //               borderRadius:
+                              //                   BorderRadius.circular(10 * fem),
+                              //               color: Color(0xffffffff),
+                              //             ),
+                              //           ),
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                               Positioned(
                                 // adminq3z (I168:204;168:154)
                                 left: 43 * fem,
                                 top: 0 * fem,
-                                child: Align(
-                                  child: SizedBox(
-                                    width: 75 * fem,
-                                    height: 52 * fem,
-                                    child: Text(
-                                      'Admin',
-                                      style: SafeGoogleFont(
-                                        'Inknut Antiqua',
-                                        fontSize: 20 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 2.5775 * ffem / fem,
-                                        color: Color(0xffffffff),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigate to the 'Donors' page
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Admin()), // Replace 'DonorsPage' with the actual class name
+                                    );
+                                  },
+                                  child: Align(
+                                    child: SizedBox(
+                                      width: 100 * fem,
+                                      height: 52 * fem,
+                                      child: Text(
+                                        'Admin',
+                                        style: SafeGoogleFont(
+                                          'Inknut Antiqua',
+                                          fontSize: 20 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 2.5775 * ffem / fem,
+                                          color: Color(0xffffffff),
+                                        ),
                                       ),
                                     ),
                                   ),

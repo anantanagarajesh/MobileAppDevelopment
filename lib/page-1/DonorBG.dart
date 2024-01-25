@@ -3,7 +3,25 @@ import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/donation.dart';
 import 'package:myapp/page-1/login.dart';
 
-class DonorBG extends StatelessWidget {
+class DonorBG extends StatefulWidget {
+  // Remove 'const' from the constructor since we have non-final fields
+  DonorBG({Key? key}) : super(key: key);
+
+  @override
+  // Correct the state class name
+  _DonorBGState createState() => _DonorBGState();
+}
+
+class _DonorBGState extends State<DonorBG> {
+  // Move the button state variables to the state class
+  bool isButtonPressed1 = false;
+  bool isButtonPressed2 = false;
+  bool isButtonPressed3 = false;
+  bool isButtonPressed4 = false;
+  bool isButtonPressed5 = false;
+  bool isButtonPressed6 = false;
+  bool isButtonPressed7 = false;
+  bool isButtonPressed8 = false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 391;
@@ -220,7 +238,7 @@ class DonorBG extends StatelessWidget {
                                                                       .circular(
                                                                           20 *
                                                                               fem),
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xffd9d9d9),
                                                             ),
                                                           ),
@@ -252,7 +270,7 @@ class DonorBG extends StatelessWidget {
                                                                 height: 2.5775 *
                                                                     ffem /
                                                                     fem,
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xff000000),
                                                               ),
                                                             ),
@@ -539,7 +557,7 @@ class DonorBG extends StatelessWidget {
                                                                           20 *
                                                                               fem),
                                                               color: Color(
-                                                                  0xffd9d9d9),
+                                                                  0xFFD9D9D9),
                                                             ),
                                                           ),
                                                         ),

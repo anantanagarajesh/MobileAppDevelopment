@@ -17,30 +17,6 @@ class Ailments extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              // emailw3r (137:109)
-              left: 63.5 * fem,
-              top: 232.5 * fem,
-              child: Center(
-                child: Align(
-                  child: SizedBox(
-                    width: 65 * fem,
-                    height: 52 * fem,
-                    child: Text(
-                      'Email',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inknut Antiqua',
-                        fontSize: 20 * ffem,
-                        fontWeight: FontWeight.w400,
-                        height: 2.5775 * ffem / fem,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
               // rectangle10CkU (137:110)
               left: 0 * fem,
               top: 0 * fem,
@@ -144,21 +120,43 @@ class Ailments extends StatelessWidget {
                     ),
                     Container(
                       // autogroup75ynYDz (9DSvKvuFoW7WFxW1wX75yn)
-                      padding: EdgeInsets.fromLTRB(
-                          13 * fem, 6 * fem, 13 * fem, 3 * fem),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 13 * fem), // Adjust padding as needed
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Color(0xffd9d9d9),
                         borderRadius: BorderRadius.circular(20 * fem),
                       ),
-                      child: Text(
-                        'Y/N',
-                        style: SafeGoogleFont(
-                          'Inknut Antiqua',
-                          fontSize: 12 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
+                      child: Material(
+                        // Wrap the TextField with Material
+                        color: Colors
+                            .transparent, // Make Material widget transparent
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Y/N',
+                            hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 91, 91, 91).withOpacity(
+                                  0.5), // Placeholder text color in white with some opacity
+                              fontSize: 16 * ffem,
+                            ),
+                            border: InputBorder
+                                .none, // No underline on the text field
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 6 *
+                                    fem), // Adjust vertical padding to match your design
+                            filled:
+                                true, // If you want to keep the grey background color
+                            fillColor: Color(0xffd9d9d9), // Background color
+                          ),
+                          style: TextStyle(
+                            fontSize: 12 * ffem,
+                            color: Color.fromARGB(
+                                255, 0, 0, 0), // Text color inside the field
+                            height: 2.5775 * ffem / fem,
+                          ),
+                          textAlign: TextAlign
+                              .left, // Center the text within the TextField
+                          // Additional properties depending on your needs
                         ),
                       ),
                     ),
@@ -327,22 +325,38 @@ class Ailments extends StatelessWidget {
               left: 30 * fem,
               top: 505 * fem,
               child: Container(
-                padding:
-                    EdgeInsets.fromLTRB(12 * fem, 0 * fem, 12 * fem, 4.5 * fem),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 12 * fem,
+                    vertical: 4.5 * fem), // Adjust padding as needed
                 width: 337 * fem,
-                height: 40 * fem,
+                height: 37 * fem,
                 decoration: BoxDecoration(
                   color: Color(0xffd9d9d9),
                   borderRadius: BorderRadius.circular(20 * fem),
                 ),
-                child: Text(
-                  'Y/N',
-                  style: SafeGoogleFont(
-                    'Inknut Antiqua',
-                    fontSize: 12 * ffem,
-                    fontWeight: FontWeight.w400,
-                    height: 2.5775 * ffem / fem,
-                    color: Color(0xffffffff),
+                child: Material(
+                  color: Colors.transparent, // Make Material widget transparent
+                  child: TextFormField(
+                    textAlign: TextAlign.left, // Align the text to the left
+                    decoration: InputDecoration(
+                      hintText: 'Y/N',
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 91, 91, 91).withOpacity(0.5),
+                        fontSize: 16 * ffem, // Increased font size
+                      ),
+                      border:
+                          InputBorder.none, // No underline on the text field
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 6 * fem,
+                          horizontal: 0 * fem), // Adjust padding
+                      filled: true,
+                      fillColor: Color(0xffd9d9d9),
+                    ),
+                    style: TextStyle(
+                      fontSize: 16 * ffem, // Increased font size
+                      color: Color(0xffffffff),
+                      height: 2.5775 * ffem / fem,
+                    ),
                   ),
                 ),
               ),
@@ -352,22 +366,38 @@ class Ailments extends StatelessWidget {
               left: 30 * fem,
               top: 570 * fem,
               child: Container(
-                padding:
-                    EdgeInsets.fromLTRB(12 * fem, 0 * fem, 12 * fem, 4.5 * fem),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 12 * fem,
+                    vertical: 4.5 * fem), // Adjust padding as needed
                 width: 337 * fem,
-                height: 40 * fem,
+                height: 38 * fem,
                 decoration: BoxDecoration(
                   color: Color(0xffd9d9d9),
                   borderRadius: BorderRadius.circular(20 * fem),
                 ),
-                child: Text(
-                  'Y/N',
-                  style: SafeGoogleFont(
-                    'Inknut Antiqua',
-                    fontSize: 12 * ffem,
-                    fontWeight: FontWeight.w400,
-                    height: 2.5775 * ffem / fem,
-                    color: Color(0xffffffff),
+                child: Material(
+                  color: Colors.transparent, // Make Material widget transparent
+                  child: TextFormField(
+                    textAlign: TextAlign.left, // Align the text to the left
+                    decoration: InputDecoration(
+                      hintText: 'Y/N',
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 91, 91, 91).withOpacity(0.5),
+                        fontSize: 16 * ffem, // Increased font size
+                      ),
+                      border:
+                          InputBorder.none, // No underline on the text field
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 6 * fem,
+                          horizontal: 0 * fem), // Adjust padding
+                      filled: true,
+                      fillColor: Color(0xffd9d9d9),
+                    ),
+                    style: TextStyle(
+                      fontSize: 16 * ffem, // Increased font size
+                      color: Color(0xffffffff),
+                      height: 2.5775 * ffem / fem,
+                    ),
                   ),
                 ),
               ),

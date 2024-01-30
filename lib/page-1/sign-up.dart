@@ -3,7 +3,10 @@ import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/login.dart';
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -575,16 +578,114 @@ class _SignUpState extends State<SignUp> {
                           print("Not success");
                       },
                       child: TextButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          final SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+
                           if (_formKey.currentState!.validate()) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Login()),
-                            );
-                            print("Sucess");
-                          } else
-                            print("Not success");
+                            String email = emailController.value.text;
+                            String phoneNumber =
+                                phoneNumberController.value.text;
+                            String password = _passwordController.value.text;
+                            if (email.isEmpty ||
+                                phoneNumber.isEmpty ||
+                                password.isEmpty) {
+                              print(
+                                  'Email, Phone Number, and Password must not be empty.');
+                              return;
+                            }
+                            FirebaseFirestore db = FirebaseFirestore.instance;
+                            final docRef = db.collection("signup").doc(email);
+
+                            try {
+                              DocumentSnapshot doc = await docRef.get();
+                              if (doc.exists) {
+                                print("Email already exists");
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("Email already exists."),
+                                    duration: Duration(seconds: 3),
+                                  ),
+                                );
+                              } else {
+                                final userdata = {
+                                  "email": email,
+                                  "phone number": phoneNumber,
+                                  "password": password
+                                };
+                                await db
+                                    .collection("signup")
+                                    .doc(email)
+                                    .set(userdata);
+                                print("Signup successful");
+                                await prefs.setString('user_email', email);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Login()),
+                                );
+                              }
+                            } catch (e) {
+                              print(e.toString());
+                              // Handle the error, show an alert or a snackbar
+                            }
+                          }
                         },
+                        // onPressed: () async {
+                        //   final SharedPreferences prefs =
+                        //       await SharedPreferences.getInstance();
+
+                        //   if (_formKey.currentState!.validate()) {
+                        //     String email = emailController.value.text;
+                        //     String phoneNumber =
+                        //         phoneNumberController.value.text;
+                        //     String password = _passwordController.value.text;
+
+                        //     // Storing values obtained from frontend using .value.text
+
+                        //     // initialising firebase
+                        //     FirebaseFirestore db = FirebaseFirestore.instance;
+                        //     // userdata goes to db
+                        //     final docRef = db.collection("signup").doc(email);
+                        //     docRef.get().then((DocumentSnapshot doc) async {
+                        //       if (doc.exists) {
+                        //         // Email already exists, show warning
+                        //         print("Email already exists");
+                        //         ScaffoldMessenger.of(context).showSnackBar(
+                        //           const SnackBar(
+                        //             content: Text("Email already exists."),
+                        //             duration: Duration(seconds: 3),
+                        //           ),
+                        //         );
+                        //       } else {
+                        //         final userdata = <String, String>{
+                        //           "email": email,
+                        //           "phone number": phoneNumber,
+                        //           "password": password
+                        //         };
+                        //         db
+                        //             .collection("signup")
+                        //             .doc(email)
+                        //             .set(userdata);
+                        //         print("Success");
+                        //         Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => Login()),
+                        //         );
+                        //         await prefs.setString('user_email', email);
+
+                        //         //print("Signup successful");
+                        //       }
+                        //     });
+                        //     // Navigator.push(
+                        //     //   context,
+                        //     //   MaterialPageRoute(builder: (context) => Login()),
+                        //     // );
+                        //     // print("Sucess");
+                        //   } //else
+                        //   //   print("Not success");
+                        // },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                         ),

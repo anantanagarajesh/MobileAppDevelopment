@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/page-1/request.dart';
 import 'package:myapp/utils.dart';
-import 'package:myapp/page-1/occupation.dart';
 
 class ReceiveBG extends StatefulWidget {
   @override

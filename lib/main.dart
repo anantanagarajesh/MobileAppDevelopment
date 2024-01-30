@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/firebase_options.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/sign-up.dart';
 import 'package:myapp/page-1/RecieveBG.dart';
@@ -13,7 +15,13 @@ import 'package:myapp/page-1/donors.dart';
 import 'package:myapp/page-1/donors-BqN.dart';
 import 'package:myapp/page-1/Requestdetails.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/page-1/DonorBG.dart'; //on clicking login
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/sign-up.dart'; //on clicking create account
 import 'package:firebase_auth/firebase_auth.dart'; //for firebase connection
 import 'package:email_validator/email_validator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -534,17 +536,86 @@ class _LoginState extends State<Login> {
                                 print("Not success");
                             },
                             child: TextButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                final SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+
                                 if (_formKey.currentState!.validate()) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DonorBG()),
-                                  );
-                                  print("Sucess");
-                                } else
-                                  print("Not success");
+                                  FirebaseFirestore db =
+                                      FirebaseFirestore.instance;
+                                  // initialise the firebasefirestore client
+                                  String email = emailController.value.text;
+                                  // store email
+
+                                  final docRef =
+                                      db.collection("signup").doc(email);
+                                  // check if a document with that email exists
+                                  docRef
+                                      .get()
+                                      .then((DocumentSnapshot doc) async {
+                                    if (doc.exists) {
+                                      // User with the provided email exists
+                                      final data =
+                                          doc.data() as Map<String, dynamic>;
+                                      String storedPassword = data[
+                                          "Password"]; // Assuming "password" is the key for the password in your Firestore document
+
+                                      // Now check if the entered password matches the stored password
+                                      String enteredPassword =
+                                          _passwordController.value.text;
+
+                                      if (storedPassword == enteredPassword) {
+                                        // store user email using shared preferences.
+                                        await prefs.setString(
+                                            'user_email', email);
+
+                                        // Passwords match, allow login
+
+// Save an integer value to 'counter' key.
+
+                                        print("Login successful");
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => DonorBG()),
+                                        );
+                                        // navigation
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                          content: Text("Wrong Password"),
+                                          duration: Duration(seconds: 3),
+                                        ));
+                                        // Passwords don't match
+                                        print("Incorrect password");
+                                      }
+                                    } else {
+                                      // User with the provided email doesn't exist
+                                      print(
+                                          "User with this email does not exist");
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                        content: Text(
+                                            "Email does not exists, Sign up first"),
+                                        duration: Duration(seconds: 3),
+                                      ));
+                                    }
+                                  });
+                                } else {
+                                  print("Validation failed");
+                                }
                               },
+                              // onPressed: () {
+                              //   if (_formKey.currentState!.validate()) {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //           builder: (context) => DonorBG()),
+                              //     );
+                              //     print("Sucess");
+                              //   } else
+                              //     print("Not success");
+                              // },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
                               ),

@@ -14,12 +14,19 @@ import 'package:myapp/page-1/ailments.dart';
 import 'package:myapp/page-1/donors.dart';
 import 'package:myapp/page-1/donors-BqN.dart';
 import 'package:myapp/page-1/Requestdetails.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  try {
+    await Firebase.initializeApp();
+    print("Firebase initialized successfully");
+  } catch (e) {
+    print("Error initializing Firebase: $e");
+  }
   runApp(MyApp());
 }
 

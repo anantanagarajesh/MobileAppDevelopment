@@ -587,9 +587,7 @@ class _SignUpState extends State<SignUp> {
                             String phoneNumber =
                                 phoneNumberController.value.text;
                             String password = _passwordController.value.text;
-                            if (email.isEmpty ||
-                                phoneNumber.isEmpty ||
-                                password.isEmpty) {
+                            if (email.isEmpty || password.isEmpty) {
                               print(
                                   'Email, Phone Number, and Password must not be empty.');
                               return;

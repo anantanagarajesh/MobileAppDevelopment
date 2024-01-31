@@ -55,7 +55,7 @@ class Ailments extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Low/Normal/High',
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
                           style: SafeGoogleFont(
                             'Inknut Antiqua',
                             fontSize: 12 * ffem,
@@ -81,7 +81,7 @@ class Ailments extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Y/N',
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
                           style: SafeGoogleFont(
                             'Inknut Antiqua',
                             fontSize: 12 * ffem,

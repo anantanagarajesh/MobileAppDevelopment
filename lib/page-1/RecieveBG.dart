@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/page-1/request.dart';
 import 'package:myapp/utils.dart';
+import 'package:myapp/page-1/Requestdetails.dart';
 
 class ReceiveBG extends StatefulWidget {
   @override
@@ -280,7 +281,7 @@ class _ReceiveBGState extends State<ReceiveBG> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        PatientDetails()), // Replace with your target page
+                                                        RequestDetails()), // Replace with your target page
                                               );
                                             }
                                           : null, // Button is disabled if no blood group is selected

@@ -8,7 +8,7 @@ import 'package:myapp/page-1/DonorBG.dart';
 import 'package:myapp/page-1/thanks.dart';
 import 'package:myapp/page-1/login.dart';
 import 'package:myapp/page-1/opening-page.dart' as openingpage;
-import 'package:myapp/page-1/request.dart';
+import 'package:myapp/page-1/PatientDetails.dart';
 import 'package:myapp/page-1/DonationPage.dart';
 import 'package:myapp/page-1/ailments.dart';
 import 'package:myapp/page-1/donors.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/page-1/donors-BqN.dart';
 import 'package:myapp/page-1/hospital2.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RequestDetails extends StatefulWidget {
   @override
@@ -8,6 +8,12 @@ class RequestDetails extends StatefulWidget {
 }
 
 class _HospitalState extends State<RequestDetails> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final TextEditingController _patientNameController = TextEditingController();
+  final TextEditingController _attendeeNameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
+
   String _selectedUnit = '1';
   bool _isCritical = false;
   TextEditingController _dateController = TextEditingController();
@@ -37,14 +43,36 @@ class _HospitalState extends State<RequestDetails> {
     Navigator.pop(context);
   }
 
-  void _submitRequest() {
-    // TODO: Implement submission logic
-    print(
-        'Submit request with selected unit $_selectedUnit and critical: $_isCritical');
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => donors()),
-    );
+  void _submitRequest() async {
+    try {
+      await _firestore.collection("requests").add({
+        'patient_name': _patientNameController.text,
+        'attendee_name': _attendeeNameController.text,
+        'phone_number': _phoneNumberController.text,
+        'units_required': _selectedUnit,
+        'location': _locationController.text,
+        'required_date': _dateController.text,
+        'is_critical': _isCritical,
+        // Add other fields as required
+      });
+
+      print('Request submitted successfully');
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => hospital2()));
+    } catch (e) {
+      print('Error submitting request: $e');
+      // Handle the error, perhaps show a snackbar/message to the user
+    }
   }
+
+  // void _submitRequest() {
+  //   // TODO: Implement submission logic
+  //   print(
+  //       'Submit request with selected unit $_selectedUnit and critical: $_isCritical');
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(builder: (context) => donors()),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +90,7 @@ class _HospitalState extends State<RequestDetails> {
           child: Column(
             children: <Widget>[
               TextField(
+                controller: _patientNameController,
                 decoration: InputDecoration(
                   labelText: "Patient's Name",
                   border: OutlineInputBorder(),
@@ -69,6 +98,7 @@ class _HospitalState extends State<RequestDetails> {
               ),
               SizedBox(height: 16),
               TextField(
+                controller: _attendeeNameController,
                 decoration: InputDecoration(
                   labelText: "Attendee's Name",
                   border: OutlineInputBorder(),
@@ -76,6 +106,7 @@ class _HospitalState extends State<RequestDetails> {
               ),
               SizedBox(height: 16),
               TextField(
+                controller: _phoneNumberController,
                 decoration: InputDecoration(
                   labelText: "Phone no.",
                   border: OutlineInputBorder(),
@@ -152,7 +183,7 @@ class _HospitalState extends State<RequestDetails> {
                       },
                       child: Text('Next'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.red,
+                        backgroundColor: Colors.red,
                         padding: EdgeInsets.symmetric(vertical: 16),
                       ),
                     ),
@@ -177,7 +208,6 @@ class _HospitalState extends State<RequestDetails> {
     );
   }
 }
-
 // import 'package:flutter/material.dart';
 // import 'package:myapp/utils.dart';
 

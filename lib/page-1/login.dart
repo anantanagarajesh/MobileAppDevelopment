@@ -4,7 +4,6 @@ import 'package:myapp/page-1/DonorBG.dart'; //on clicking login
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/sign-up.dart'; //on clicking create account
 import 'package:firebase_auth/firebase_auth.dart'; //for firebase connection
-import 'package:email_validator/email_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -454,6 +453,7 @@ class _LoginState extends State<Login> {
                               onPressed: () async {
                                 final SharedPreferences prefs =
                                     await SharedPreferences.getInstance();
+                                print("Login successful");
 
                                 if (_formKey.currentState!.validate()) {
                                   FirebaseFirestore db =

@@ -595,42 +595,6 @@ class _PatientDetailsState extends State<PatientDetails> {
                 ),
               ),
             ),
-
-            // Positioned(
-            //   // group47TeC (142:141)
-            //   left: 46 * fem,
-            //   top: 720 * fem,
-            //   child: TextButton(
-            //     onPressed: () {
-            //     },
-            //     style: TextButton.styleFrom(
-            //       padding: EdgeInsets.zero,
-            //     ),
-            //     child: Container(
-            //       width: 124 * fem,
-            //       height: 52 * fem,
-            //       decoration: BoxDecoration(
-            //         color: Color(0xffff3737),
-            //         borderRadius: BorderRadius.circular(20 * fem),
-            //       ),
-            //       child: Center(
-            //         child: Center(
-            //           child: Text(
-            //             'Next',
-            //             textAlign: TextAlign.center,
-            //             style: SafeGoogleFont(
-            //               'Inknut Antiqua',
-            //               fontSize: 20 * ffem,
-            //               fontWeight: FontWeight.w400,
-            //               height: 2.5775 * ffem / fem,
-            //               color: Color(0xffffffff),
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

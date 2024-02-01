@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
@@ -438,6 +437,20 @@ class _SignUpState extends State<SignUp> {
                                         vertical: 12 * fem,
                                       ),
                                     ),
+                                    validator: (phno) {
+                                      const pattern =
+                                          r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
+                                      final regExp = RegExp(pattern);
+                                      if (phno == null || phno.isEmpty) {
+                                        return 'Phone number required';
+                                      } else if (phno.length < 10 ||
+                                          phno.length > 10) {
+                                        return 'Phone number must contain 10 digits';
+                                      } else if (!regExp.hasMatch(phno)) {
+                                        return 'Invalid phone number';
+                                      }
+                                      return null;
+                                    },
                                     style: TextStyle(
                                       fontFamily: 'Inknut Antiqua',
                                       fontSize: 20 * ffem,
@@ -470,17 +483,10 @@ class _SignUpState extends State<SignUp> {
                               await SharedPreferences.getInstance();
 
                           if (_formKey.currentState!.validate()) {
-<<<<<<< Updated upstream
                             String email = emailController.value.text;
                             String phoneNumber =
                                 phoneNumberController.value.text;
                             String password = _passwordController.value.text;
-=======
-                            String email = emailController.text;
-                            String phoneNumber = phoneNumberController.text;
-                            String password = _passwordController.text;
-
->>>>>>> Stashed changes
                             if (email.isEmpty ||
                                 phoneNumber.isEmpty ||
                                 password.isEmpty) {

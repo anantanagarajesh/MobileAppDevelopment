@@ -1,10 +1,31 @@
+import 'dart:js';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/page-1/donors-BqN.dart';
 import 'package:myapp/page-1/donors.dart';
 import 'package:myapp/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+class BloodRequest {
+  String hospitalName;
+  String doctorName;
+  // ...other fields
+
+  BloodRequest({this.hospitalName = '', this.doctorName = ''});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'hospitalName': hospitalName,
+      'doctorName': doctorName,
+      // ...other fields
+    };
+  }
+}
+
 class hospital2 extends StatelessWidget {
+  final TextEditingController _hospitalNameController = TextEditingController();
+  final TextEditingController _doctorNameController = TextEditingController();
   // Define a method to launch URLs
   void _launchURL() async {
     final Uri url = Uri.parse(
@@ -13,6 +34,26 @@ class hospital2 extends StatelessWidget {
       await launchUrl(url);
     } else {
       throw 'Could not launch $url';
+    }
+  }
+
+  void _submitRequest() async {
+    final bloodRequest = BloodRequest(
+      hospitalName: _hospitalNameController.text,
+      doctorName: _doctorNameController.text,
+      // ...other fields
+    );
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('bloodRequests')
+          .add(bloodRequest.toJson());
+      print('Request submitted successfully');
+      Navigator.of(context as BuildContext)
+          .push(MaterialPageRoute(builder: (context) => Donors()));
+    } catch (e) {
+      print('Error submitting request: $e');
+      // Handle the error, show a snackbar or alert dialog
     }
   }
 
@@ -162,6 +203,7 @@ class hospital2 extends StatelessWidget {
                   width: 337 * fem,
                   height: 46.94 * fem,
                   child: TextField(
+                    controller: _hospitalNameController,
                     decoration: textFieldDecoration('Hospital Name'),
                   ),
                 ),
@@ -181,6 +223,7 @@ class hospital2 extends StatelessWidget {
                   width: 337 * fem,
                   height: 46.94 * fem,
                   child: TextField(
+                    controller: _doctorNameController,
                     decoration: textFieldDecoration('Doctor Name'),
                   ),
                 ),
@@ -193,9 +236,9 @@ class hospital2 extends StatelessWidget {
               top: 760 * fem,
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Donors()),
-                  );
+                  _submitRequest;
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Donors()));
                 },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,

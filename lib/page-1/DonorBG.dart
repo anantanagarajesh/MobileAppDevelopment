@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/DonationPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DonorBG extends StatefulWidget {
   @override
@@ -42,6 +44,20 @@ class _DonorBGState extends State<DonorBG> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        // Navigate to login or signup page
+      } else {
+        print('User is signed in!');
+        // Execute logic for signed-in user
+      }
+    });
   }
 
   @override
@@ -274,16 +290,55 @@ class _DonorBGState extends State<DonorBG> {
                                     right: 50 * fem,
                                     child: ElevatedButton(
                                       onPressed: selectedBloodGroup != null
-                                          ? () {
-                                              // Handle the request logic here
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        DonationPage()), // Replace with your target page
-                                              );
+                                          ? () async {
+                                              try {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            DonationPage()));
+                                                // Get the current user
+                                                User? user = FirebaseAuth
+                                                    .instance.currentUser;
+                                                if (user != null) {
+                                                  print("it is working");
+                                                  // Path to the user's document in Firestore
+                                                  DocumentReference userDoc =
+                                                      FirebaseFirestore.instance
+                                                          .collection(
+                                                              'DonorBloodGroup')
+                                                          .doc(user.uid);
+
+                                                  // Update the user's profile with the selected blood group
+                                                  await userDoc.set(
+                                                      {
+                                                        'BloodGroup':
+                                                            selectedBloodGroup,
+                                                      },
+                                                      SetOptions(
+                                                          merge:
+                                                              true)); // Merge true to update the document without overwriting other fields
+
+                                                  // Navigate to the DonationPage or show a success message
+                                                }
+                                              } catch (e) {
+                                                // Handle errors, e.g., show an error message
+                                                print(
+                                                    "Error updating blood group: $e");
+                                              }
                                             }
                                           : null, // Button is disabled if no blood group is selected
+                                      // onPressed: selectedBloodGroup != null
+                                      //     ? () {
+                                      //         // Handle the request logic here
+                                      //         Navigator.push(
+                                      //           context,
+                                      //           MaterialPageRoute(
+                                      //               builder: (context) =>
+                                      //                   DonationPage()), // Replace with your target page
+                                      //         );
+                                      //       }
+                                      //     : null, // Button is disabled if no blood group is selected
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Color(
                                             0xffff3737), // Button background color

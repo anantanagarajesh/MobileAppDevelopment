@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/page-1/DonorBG.dart'; //on clicking login
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/SignUp.dart'; //on clicking create account
-import 'package:firebase_auth/firebase_auth.dart'; //for firebase connection
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -153,7 +152,7 @@ class _LoginState extends State<Login> {
                                   // loginAck (42:6)
                                   child: Container(
                                     margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 15.94 * fem, 0 * fem, 0 * fem),
+                                        0 * fem, 0 * fem, 0 * fem, 10 * fem),
                                     child: Text(
                                       'Login',
                                       textAlign: TextAlign.center,

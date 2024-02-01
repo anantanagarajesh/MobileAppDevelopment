@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/login.dart';
-import 'dart:convert';
-import 'package:http/http.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -173,7 +170,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   Positioned(
                     left: 120.5 * fem,
-                    top: 44.9437866211 * fem,
+                    top: 60 * fem,
                     child: Center(
                       child: Align(
                         child: SizedBox(
@@ -184,7 +181,7 @@ class _SignUpState extends State<SignUp> {
                             textAlign: TextAlign.center,
                             style: SafeGoogleFont(
                               'Inknut Antiqua',
-                              fontSize: 32 * ffem,
+                              fontSize: 26 * ffem,
                               fontWeight: FontWeight.w400,
                               height: 2.5775 * ffem / fem,
                               color: Color(0xffffffff),

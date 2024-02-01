@@ -101,7 +101,12 @@ class _OccupationPageState extends State<OccupationPage> {
                                 left: 0 * fem,
                                 top: 2.0307693481 * fem,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      _isButtonPressed1 =
+                                          !_isButtonPressed1; // Toggle the button state
+                                    });
+                                  },
                                   style: TextButton.styleFrom(
                                     padding: EdgeInsets.zero,
                                   ),
@@ -111,7 +116,10 @@ class _OccupationPageState extends State<OccupationPage> {
                                     width: 337 * fem,
                                     height: 46.94 * fem,
                                     decoration: BoxDecoration(
-                                      color: Color(0xffff3737),
+                                      color: _isButtonPressed1
+                                          ? Color.fromARGB(255, 67, 218, 67)
+                                          : Color(
+                                              0xffff3737), // Change color based on flag
                                       borderRadius:
                                           BorderRadius.circular(20 * fem),
                                     ),
@@ -181,7 +189,12 @@ class _OccupationPageState extends State<OccupationPage> {
                                 left: 0 * fem,
                                 top: 5.0307693481 * fem,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    setState(() {
+                                      _isButtonPressed2 =
+                                          !_isButtonPressed2; // Toggle the button state
+                                    });
+                                  },
                                   style: TextButton.styleFrom(
                                     padding: EdgeInsets.zero,
                                   ),
@@ -191,7 +204,10 @@ class _OccupationPageState extends State<OccupationPage> {
                                     width: 337 * fem,
                                     height: 46.94 * fem,
                                     decoration: BoxDecoration(
-                                      color: Color(0xffff3737),
+                                      color: _isButtonPressed2
+                                          ? Color.fromARGB(255, 67, 218, 67)
+                                          : Color(
+                                              0xffff3737), // Change color based on flag
                                       borderRadius:
                                           BorderRadius.circular(20 * fem),
                                     ),
@@ -273,7 +289,7 @@ class _OccupationPageState extends State<OccupationPage> {
                                     height: 46.94 * fem,
                                     decoration: BoxDecoration(
                                       color: _isButtonPressed3
-                                          ? Color.fromARGB(255, 134, 232, 134)
+                                          ? Color.fromARGB(255, 67, 218, 67)
                                           : Color(
                                               0xffff3737), // Change color based on flag
                                       borderRadius:

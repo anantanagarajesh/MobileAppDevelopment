@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/page-1/PatientDetails.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/Requestdetails.dart';
 
@@ -89,7 +88,7 @@ class _ReceiveBGState extends State<ReceiveBG> {
                 child: Container(
                   padding:
                       EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                  width: 391 * fem,
+                  width: 390 * fem,
                   height: 844 * fem,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(70 * fem),
@@ -232,7 +231,7 @@ class _ReceiveBGState extends State<ReceiveBG> {
                               ),
                             ),
                             Positioned(
-                                top: 300 *
+                                top: 100 *
                                     fem, // You can adjust this value to move the buttons up
                                 left: 0,
                                 right: 0,

@@ -295,7 +295,7 @@ class _PatientDetailsState extends State<PatientDetails> {
                       margin: EdgeInsets.fromLTRB(
                           0 * fem, 0 * fem, 0 * fem, 39 * fem),
                       child: Text(
-                        'Attendee’s Name',
+                        "Attendee’s Name",
                         style: SafeGoogleFont(
                           'Inknut Antiqua',
                           fontSize: 14 * ffem,

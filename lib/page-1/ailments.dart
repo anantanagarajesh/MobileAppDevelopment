@@ -1,55 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:myapp/page-1/thanks.dart';
+import 'package:myapp/page-1/Thanks.dart';
 
 class Ailments extends StatefulWidget {
   @override
-  _OtherDetailsPageState createState() => _OtherDetailsPageState();
+  _AilmentsState createState() => _AilmentsState();
 }
 
-class _OtherDetailsPageState extends State<Ailments> {
+class _AilmentsState extends State<Ailments> {
   final _formKey = GlobalKey<FormState>();
 
-  // State variables to store yes/no answers
-  bool hasAnaemia = false;
-  bool hasThyroid = false;
-  bool hasAidsHIV = false;
-  bool hasHepatitis = false;
-  bool hadCardiacArrest = false;
-  bool takesMedication = false;
+  // State variables to store yes/no answers as strings for easier Firestore storage
+  Map<String, String> responses = {
+    'hasAnaemia': 'NO',
+    'hasThyroid': 'NO',
+    'hasAidsHIV': 'NO',
+    'hasHepatitis': 'NO',
+    'hadCardiacArrest': 'NO',
+    'takesMedication': 'NO',
+  };
   String bloodPressure = '';
 
   Future<void> saveDetails() async {
-    // Get the current user
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      // Store the data in Firestore
       await FirebaseFirestore.instance
           .collection('UserHealthDetails')
           .doc(user.uid)
           .set({
         'bloodPressure': bloodPressure,
-        'hasAnaemia': hasAnaemia,
-        'hasThyroid': hasThyroid,
-        'hasAidsHIV': hasAidsHIV,
-        'hasHepatitis': hasHepatitis,
-        'hadCardiacArrest': hadCardiacArrest,
-        'takesMedication': takesMedication,
+        ...responses,
       });
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Thanks()));
     } else {
       print('No user logged in!');
     }
   }
 
-  Widget yesNoSwitch(String question, bool value, Function(bool) onChanged) {
-    return ListTile(
-      title: Text(question),
-      trailing: Switch(
-        value: value,
-        onChanged: onChanged,
-        activeColor: Colors.red,
-        inactiveTrackColor: Colors.grey,
+  Widget yesNoQuestion(String question, String key) {
+    return Card(
+      elevation: 2.0,
+      margin: EdgeInsets.all(8.0),
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(question),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('YES'),
+                Radio<String>(
+                  value: 'YES',
+                  groupValue: responses[key],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[key] = value!;
+                    });
+                  },
+                  activeColor: Colors.red,
+                ),
+                Text('NO'),
+                Radio<String>(
+                  value: 'NO',
+                  groupValue: responses[key],
+                  onChanged: (value) {
+                    setState(() {
+                      responses[key] = value!;
+                    });
+                  },
+                  activeColor: Colors.red,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -66,78 +94,41 @@ class _OtherDetailsPageState extends State<Ailments> {
           key: _formKey,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Blood Pressure',
-                    hintText: 'Low/Normal/High',
-                  ),
-                  onSaved: (value) {
-                    bloodPressure = value ?? '';
-                  },
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your blood pressure status';
-                    }
-                    return null;
-                  },
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Blood Pressure',
+                  hintText: 'Low/Normal/High',
+                  border: OutlineInputBorder(),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 ),
+                onSaved: (value) => bloodPressure = value ?? '',
+                validator: (value) => value == null || value.isEmpty
+                    ? 'Please enter your blood pressure status'
+                    : null,
               ),
-              yesNoSwitch('Are you suffering from Anaemia?', hasAnaemia,
-                  (bool value) {
-                setState(() {
-                  hasAnaemia = value;
-                });
-              }),
-              yesNoSwitch('Are you suffering from Thyroid?', hasThyroid,
-                  (bool value) {
-                setState(() {
-                  hasThyroid = value;
-                });
-              }),
-              yesNoSwitch('Are you suffering from AIDS/HIV?', hasAidsHIV,
-                  (bool value) {
-                setState(() {
-                  hasAidsHIV = value;
-                });
-              }),
-              yesNoSwitch(
-                  'Are you suffering from Hepatitis B or C?', hasHepatitis,
-                  (bool value) {
-                setState(() {
-                  hasHepatitis = value;
-                });
-              }),
-              yesNoSwitch(
-                  'Did you have a cardiac arrest in past?', hadCardiacArrest,
-                  (bool value) {
-                setState(() {
-                  hadCardiacArrest = value;
-                });
-              }),
-              yesNoSwitch(
-                  'Do you take medications for any ailments?', takesMedication,
-                  (bool value) {
-                setState(() {
-                  takesMedication = value;
-                });
-              }),
+              yesNoQuestion('Are you suffering from Anaemia?', 'hasAnaemia'),
+              yesNoQuestion('Are you suffering from Thyroid?', 'hasThyroid'),
+              yesNoQuestion('Are you suffering from AIDS/HIV?', 'hasAidsHIV'),
+              yesNoQuestion(
+                  'Are you suffering from Hepatitis B or C?', 'hasHepatitis'),
+              yesNoQuestion(
+                  'Did you have a cardiac arrest in past?', 'hadCardiacArrest'),
+              yesNoQuestion('Do you take medications for any ailments?',
+                  'takesMedication'),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors
+                        .red, // Use onPrimary for text color with Flutter < 2.0
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       saveDetails();
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Thanks()),
-                      );
                     }
                   },
                   child: Text('Save'),
@@ -150,6 +141,158 @@ class _OtherDetailsPageState extends State<Ailments> {
     );
   }
 }
+// import 'package:flutter/material.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:myapp/page-1/Thanks.dart';
+
+// class Ailments extends StatefulWidget {
+//   @override
+//   _OtherDetailsPageState createState() => _OtherDetailsPageState();
+// }
+
+// class _OtherDetailsPageState extends State<Ailments> {
+//   final _formKey = GlobalKey<FormState>();
+
+//   // State variables to store yes/no answers
+//   bool hasAnaemia = false;
+//   bool hasThyroid = false;
+//   bool hasAidsHIV = false;
+//   bool hasHepatitis = false;
+//   bool hadCardiacArrest = false;
+//   bool takesMedication = false;
+//   String bloodPressure = '';
+
+//   Future<void> saveDetails() async {
+//     // Get the current user
+//     User? user = FirebaseAuth.instance.currentUser;
+//     if (user != null) {
+//       // Store the data in Firestore
+//       await FirebaseFirestore.instance
+//           .collection('UserHealthDetails')
+//           .doc(user.uid)
+//           .set({
+//         'bloodPressure': bloodPressure,
+//         'hasAnaemia': hasAnaemia,
+//         'hasThyroid': hasThyroid,
+//         'hasAidsHIV': hasAidsHIV,
+//         'hasHepatitis': hasHepatitis,
+//         'hadCardiacArrest': hadCardiacArrest,
+//         'takesMedication': takesMedication,
+//       });
+//     } else {
+//       print('No user logged in!');
+//     }
+//   }
+
+//   Widget yesNoSwitch(String question, bool value, Function(bool) onChanged) {
+//     return ListTile(
+//       title: Text(question),
+//       trailing: Switch(
+//         value: value,
+//         onChanged: onChanged,
+//         activeColor: Colors.red,
+//         inactiveTrackColor: Colors.grey,
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Other Details'),
+//         backgroundColor: Colors.red,
+//       ),
+//       body: SingleChildScrollView(
+//         child: Form(
+//           key: _formKey,
+//           child: Column(
+//             children: [
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: TextFormField(
+//                   decoration: InputDecoration(
+//                     labelText: 'Blood Pressure',
+//                     hintText: 'Low/Normal/High',
+//                   ),
+//                   onSaved: (value) {
+//                     bloodPressure = value ?? '';
+//                   },
+//                   validator: (value) {
+//                     if (value == null || value.isEmpty) {
+//                       return 'Please enter your blood pressure status';
+//                     }
+//                     return null;
+//                   },
+//                 ),
+//               ),
+//               yesNoSwitch('Are you suffering from Anaemia?', hasAnaemia,
+//                   (bool value) {
+//                 setState(() {
+//                   hasAnaemia = value;
+//                 });
+//               }),
+//               yesNoSwitch('Are you suffering from Thyroid?', hasThyroid,
+//                   (bool value) {
+//                 setState(() {
+//                   hasThyroid = value;
+//                 });
+//               }),
+//               yesNoSwitch('Are you suffering from AIDS/HIV?', hasAidsHIV,
+//                   (bool value) {
+//                 setState(() {
+//                   hasAidsHIV = value;
+//                 });
+//               }),
+//               yesNoSwitch(
+//                   'Are you suffering from Hepatitis B or C?', hasHepatitis,
+//                   (bool value) {
+//                 setState(() {
+//                   hasHepatitis = value;
+//                 });
+//               }),
+//               yesNoSwitch(
+//                   'Did you have a cardiac arrest in past?', hadCardiacArrest,
+//                   (bool value) {
+//                 setState(() {
+//                   hadCardiacArrest = value;
+//                 });
+//               }),
+//               yesNoSwitch(
+//                   'Do you take medications for any ailments?', takesMedication,
+//                   (bool value) {
+//                 setState(() {
+//                   takesMedication = value;
+//                 });
+//               }),
+//               Padding(
+//                 padding: const EdgeInsets.symmetric(vertical: 16.0),
+//                 child: ElevatedButton(
+//                   style: ElevatedButton.styleFrom(
+//                     backgroundColor: Colors.red,
+//                   ),
+//                   onPressed: () {
+//                     if (_formKey.currentState!.validate()) {
+//                       _formKey.currentState!.save();
+//                       saveDetails();
+
+//                       Navigator.push(
+//                         context,
+//                         MaterialPageRoute(builder: (context) => Thanks()),
+//                       );
+//                     }
+//                   },
+//                   child: Text('Save'),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 // import 'package:flutter/material.dart';
 // import 'package:myapp/utils.dart';
 // import 'package:myapp/page-1/thanks.dart';

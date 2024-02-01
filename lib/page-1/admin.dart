@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
-import 'package:myapp/page-1/sign-up.dart'; //on clicking create account
+import 'package:myapp/page-1/SignUp.dart'; //on clicking create account
 import 'package:myapp/page-1/donors-BqN.dart';
 
 class Admin extends StatelessWidget {

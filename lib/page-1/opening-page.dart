@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
-import 'package:myapp/page-1/occupation.dart';
+import 'package:myapp/page-1/OccupationPage.dart';
 
 class Scene extends StatelessWidget {
   @override

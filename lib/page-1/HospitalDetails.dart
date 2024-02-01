@@ -23,7 +23,7 @@ class BloodRequest {
   }
 }
 
-class hospital2 extends StatelessWidget {
+class HospitalDetails extends StatelessWidget {
   final TextEditingController _hospitalNameController = TextEditingController();
   final TextEditingController _doctorNameController = TextEditingController();
   // Define a method to launch URLs
@@ -237,8 +237,8 @@ class hospital2 extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   _submitRequest;
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Donors()));
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (context) => Donors()));
                 },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,

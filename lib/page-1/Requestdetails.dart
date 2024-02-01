@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/page-1/hospital2.dart';
+import 'package:myapp/page-1/HospitalDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RequestDetails extends StatefulWidget {
@@ -58,7 +58,7 @@ class _HospitalState extends State<RequestDetails> {
 
       print('Request submitted successfully');
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => hospital2()));
+          .push(MaterialPageRoute(builder: (context) => HospitalDetails()));
     } catch (e) {
       print('Error submitting request: $e');
       // Handle the error, perhaps show a snackbar/message to the user
@@ -172,7 +172,8 @@ class _HospitalState extends State<RequestDetails> {
 
                         // Navigate to the next page.
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => hospital2()),
+                          MaterialPageRoute(
+                              builder: (context) => HospitalDetails()),
                         );
                       },
                       child: Text('Next'),

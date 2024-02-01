@@ -54,31 +54,6 @@ class _SignUpState extends State<SignUp> {
               height: 844 * fem,
               child: Stack(
                 children: [
-                  // Positioned(
-                  //   // group283Dv (85:44)
-                  //   left: 27 * fem,
-                  //   top: 445 * fem,
-                  //   child: Container(
-                  //     width: 337 * fem,
-                  //     height: 46.94 * fem,
-                  //     decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(20 * fem),
-                  //     ),
-                  //     child: Center(
-                  //       // rectangle21jcY (84:39)
-                  //       child: SizedBox(
-                  //         width: double.infinity,
-                  //         height: 46.94 * fem,
-                  //         child: Container(
-                  //           decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(20 * fem),
-                  //             color: Color.fromARGB(255, 0, 0, 0),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   Positioned(
                     // rectangle1237S (39:32)
                     left: 0 * fem,
@@ -263,6 +238,7 @@ class _SignUpState extends State<SignUp> {
                           elevation:
                               2, // Optional: Adds a subtle shadow for depth (remove if not needed)
                           child: TextFormField(
+                            controller: emailController,
                             keyboardType: TextInputType
                                 .emailAddress, // Optimizes the keyboard for email input
                             decoration: InputDecoration(
@@ -375,23 +351,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
-                  // Positioned(
-                  //   // rectangle20aix (84:36)
-                  //   left: 24 * fem,
-                  //   top: 349 * fem,
-                  //   child: Align(
-                  //     child: SizedBox(
-                  //       width: 337 * fem,
-                  //       height: 46.94 * fem,
-                  //       child: Container(
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20 * fem),
-                  //           color: Color(0xffd9d9d9),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   Positioned(
                     // rectangle20aix (84:36)
                     left: 24 * fem,
@@ -402,43 +361,37 @@ class _SignUpState extends State<SignUp> {
                         height: 46.94 * fem,
                         child: Material(
                           borderRadius: BorderRadius.circular(20 * fem),
-                          elevation:
-                              2, // Optional: Adds a subtle shadow for depth (remove if not needed)
+                          elevation: 2,
                           child: TextFormField(
-                            controller: _confirmPasswordController,
-                            obscureText:
-                                !_isPasswordVisible, // Ensures the text is hidden for password input
+                            controller:
+                                _confirmPasswordController, // Add this line
+                            obscureText: !_isPasswordVisible,
                             decoration: InputDecoration(
-                              hintText:
-                                  'Confirm Password', // Placeholder text for password
-                              filled:
-                                  true, // Fill the field with a background color
-                              fillColor: Color(
-                                  0xffd9d9d9), // Background color for the input field
+                              hintText: 'Confirm Password',
+                              filled: true,
+                              fillColor: Color(0xffd9d9d9),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20 * fem),
-                                borderSide: BorderSide
-                                    .none, // Removes the default underline border
+                                borderSide: BorderSide.none,
                               ),
                               contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 20 * fem,
-                                  vertical:
-                                      12 * fem), // Padding inside the field
+                                horizontal: 20 * fem,
+                                vertical: 12 * fem,
+                              ),
                               suffixIcon: IconButton(
                                 icon: Icon(
                                   _isPasswordVisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                ), // Toggle visibility icon
+                                ),
                                 onPressed: _togglePasswordVisibility,
                               ),
                             ),
                             style: TextStyle(
-                              fontFamily:
-                                  'Inknut Antiqua', // Specify your font family
+                              fontFamily: 'Inknut Antiqua',
                               fontSize: 20 * ffem,
                               fontWeight: FontWeight.w400,
-                              color: Colors.black, // Text color for the input
+                              color: Colors.black,
                             ),
                             validator: _confirmPasswordValidator,
                           ),
@@ -446,23 +399,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
-                  // Positioned(
-                  //   // rectangle21VL8 (98:101)
-                  //   left: 27 * fem,
-                  //   top: 445 * fem,
-                  //   child: Align(
-                  //     child: SizedBox(
-                  //       width: 337 * fem,
-                  //       height: 46.94 * fem,
-                  //       child: Container(
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20 * fem),
-                  //           color: Color(0xffd9d9d9),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   Positioned(
                     // group34na8 (87:34)
                     left: 27 * fem,
@@ -476,7 +412,6 @@ class _SignUpState extends State<SignUp> {
                       child: Stack(
                         children: [
                           Positioned(
-                            // rectangle21g9i (87:35)
                             left: 0 * fem,
                             top: 2.5 * fem,
                             child: Align(
@@ -485,84 +420,35 @@ class _SignUpState extends State<SignUp> {
                                 height: 47 * fem,
                                 child: Material(
                                   borderRadius: BorderRadius.circular(20 * fem),
-                                  elevation:
-                                      2, // Optional: Adds a subtle shadow for depth (remove if not needed)
+                                  elevation: 2,
                                   child: TextFormField(
-                                    keyboardType: TextInputType
-                                        .phone, // Optimizes the keyboard for phone number input
+                                    controller: phoneNumberController,
+                                    keyboardType: TextInputType.phone,
                                     decoration: InputDecoration(
-                                      hintText:
-                                          '+91-XXXXXXXXXX', // Placeholder text for phone number
-                                      filled:
-                                          true, // Fill the field with a background color
-                                      fillColor: Color(
-                                          0xffd9d9d9), // Background color for the input field
+                                      hintText: '+91-XXXXXXXXXX',
+                                      filled: true,
+                                      fillColor: Color(0xffd9d9d9),
                                       border: OutlineInputBorder(
                                         borderRadius:
                                             BorderRadius.circular(20 * fem),
-                                        borderSide: BorderSide
-                                            .none, // Removes the default underline border
+                                        borderSide: BorderSide.none,
                                       ),
                                       contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 20 * fem,
-                                          vertical: 12 *
-                                              fem), // Padding inside the field
+                                        horizontal: 20 * fem,
+                                        vertical: 12 * fem,
+                                      ),
                                     ),
                                     style: TextStyle(
                                       fontFamily: 'Inknut Antiqua',
                                       fontSize: 20 * ffem,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors
-                                          .black, // Text color for the input
+                                      color: Colors.black,
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          )
-
-                          // Positioned(
-                          //   // rectangle21g9i (87:35)
-                          //   left: 0 * fem,
-                          //   top: 2.5 * fem,
-                          //   child: Align(
-                          //     child: SizedBox(
-                          //       width: 337 * fem,
-                          //       height: 47 * fem,
-                          //       child: Container(
-                          //         decoration: BoxDecoration(
-                          //           borderRadius: BorderRadius.circular(20 * fem),
-                          //           color: Color(0xffd9d9d9),
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-
-                          // Positioned(
-                          //   // xxxxxxxxxxyec (87:36)
-                          //   left: 18.5 * fem,
-                          //   top: 0 * fem,
-                          //   child: Center(
-                          //     child: Align(
-                          //       child: SizedBox(
-                          //         width: 220 * fem,
-                          //         height: 52 * fem,
-                          //         child: Text(
-                          //           '+91-XXXXXXXXXX',
-                          //           textAlign: TextAlign.center,
-                          //           style: SafeGoogleFont(
-                          //             'Inknut Antiqua',
-                          //             fontSize: 20 * ffem,
-                          //             fontWeight: FontWeight.w400,
-                          //             height: 2.5775 * ffem / fem,
-                          //             color: Color(0xffffffff),
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
+                          ),
                         ],
                       ),
                     ),
@@ -573,9 +459,10 @@ class _SignUpState extends State<SignUp> {
                     child: GestureDetector(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          print("Sucess");
-                        } else
+                          print("Success");
+                        } else {
                           print("Not success");
+                        }
                       },
                       child: TextButton(
                         onPressed: () async {
@@ -583,10 +470,17 @@ class _SignUpState extends State<SignUp> {
                               await SharedPreferences.getInstance();
 
                           if (_formKey.currentState!.validate()) {
+<<<<<<< Updated upstream
                             String email = emailController.value.text;
                             String phoneNumber =
                                 phoneNumberController.value.text;
                             String password = _passwordController.value.text;
+=======
+                            String email = emailController.text;
+                            String phoneNumber = phoneNumberController.text;
+                            String password = _passwordController.text;
+
+>>>>>>> Stashed changes
                             if (email.isEmpty ||
                                 phoneNumber.isEmpty ||
                                 password.isEmpty) {
@@ -594,6 +488,7 @@ class _SignUpState extends State<SignUp> {
                                   'Email, Phone Number, and Password must not be empty.');
                               return;
                             }
+
                             FirebaseFirestore db = FirebaseFirestore.instance;
                             final docRef = db.collection("signup").doc(email);
 
@@ -608,15 +503,15 @@ class _SignUpState extends State<SignUp> {
                                   ),
                                 );
                               } else {
-                                final userdata = {
+                                final userData = {
                                   "email": email,
                                   "phone number": phoneNumber,
-                                  "password": password
+                                  "password": password,
                                 };
                                 await db
                                     .collection("signup")
                                     .doc(email)
-                                    .set(userdata);
+                                    .set(userData);
                                 print("Signup successful");
                                 await prefs.setString('user_email', email);
                                 Navigator.push(
@@ -631,61 +526,6 @@ class _SignUpState extends State<SignUp> {
                             }
                           }
                         },
-                        // onPressed: () async {
-                        //   final SharedPreferences prefs =
-                        //       await SharedPreferences.getInstance();
-
-                        //   if (_formKey.currentState!.validate()) {
-                        //     String email = emailController.value.text;
-                        //     String phoneNumber =
-                        //         phoneNumberController.value.text;
-                        //     String password = _passwordController.value.text;
-
-                        //     // Storing values obtained from frontend using .value.text
-
-                        //     // initialising firebase
-                        //     FirebaseFirestore db = FirebaseFirestore.instance;
-                        //     // userdata goes to db
-                        //     final docRef = db.collection("signup").doc(email);
-                        //     docRef.get().then((DocumentSnapshot doc) async {
-                        //       if (doc.exists) {
-                        //         // Email already exists, show warning
-                        //         print("Email already exists");
-                        //         ScaffoldMessenger.of(context).showSnackBar(
-                        //           const SnackBar(
-                        //             content: Text("Email already exists."),
-                        //             duration: Duration(seconds: 3),
-                        //           ),
-                        //         );
-                        //       } else {
-                        //         final userdata = <String, String>{
-                        //           "email": email,
-                        //           "phone number": phoneNumber,
-                        //           "password": password
-                        //         };
-                        //         db
-                        //             .collection("signup")
-                        //             .doc(email)
-                        //             .set(userdata);
-                        //         print("Success");
-                        //         Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //               builder: (context) => Login()),
-                        //         );
-                        //         await prefs.setString('user_email', email);
-
-                        //         //print("Signup successful");
-                        //       }
-                        //     });
-                        //     // Navigator.push(
-                        //     //   context,
-                        //     //   MaterialPageRoute(builder: (context) => Login()),
-                        //     // );
-                        //     // print("Sucess");
-                        //   } //else
-                        //   //   print("Not success");
-                        // },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                         ),

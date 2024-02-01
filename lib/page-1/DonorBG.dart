@@ -300,7 +300,7 @@ class _DonorBGState extends State<DonorBG> {
                                             vertical: 20 * fem),
                                       ),
                                       child: Text(
-                                        'Request',
+                                        'Donate',
                                         style: TextStyle(
                                           fontSize: 24 * ffem,
                                           color: Colors.white,

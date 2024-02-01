@@ -185,6 +185,7 @@ class _LoginState extends State<Login> {
                                 elevation:
                                     2, // Optional: Adds a subtle shadow for depth (remove if not needed)
                                 child: TextFormField(
+                                  controller: emailController,
                                   keyboardType: TextInputType
                                       .emailAddress, // Optimizes the keyboard for email input
                                   decoration: InputDecoration(
@@ -226,93 +227,6 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        // Positioned(
-                        //   left: 26 * fem,
-                        //   top: 274.6745605469 * fem,
-                        //   child: Align(
-                        //     child: SizedBox(
-                        //       width: 337 * fem,
-                        //       height: 46.94 * fem,
-                        //       child: Material(
-                        //         borderRadius: BorderRadius.circular(20 * fem),
-                        //         color: Color(0xffd9d9d9),
-                        //         child: TextFormField(
-                        //           keyboardType: TextInputType.emailAddress,
-                        //           decoration: InputDecoration(
-                        //             hintText: "Email",
-                        //             hintStyle: TextStyle(
-                        //               color: Colors.grey, // Adjust the color as needed
-                        //             ),
-                        //             filled: true,
-                        //             fillColor: Color(0xffd9d9d9),
-                        //             border: OutlineInputBorder(
-                        //               borderRadius: BorderRadius.circular(20 * fem),
-                        //               borderSide: BorderSide.none,
-                        //             ),
-                        //             contentPadding: EdgeInsets.symmetric(
-                        //                 horizontal: 20 * fem, vertical: 10 * fem),
-                        //           ),
-                        //           style: SafeGoogleFont(
-                        //             'Inknut Antiqua',
-                        //             fontSize: 20 * ffem,
-                        //             fontWeight: FontWeight.w400,
-                        //             height: 2.5775 * ffem / fem,
-                        //             color: Color.fromARGB(255, 0, 0, 0),
-                        //           ),
-                        //           validator: (value) {
-                        //             if (value == null || value.isEmpty) {
-                        //               return 'Please enter your email';
-                        //             } else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        //               return 'Please enter a valid email';
-                        //             }
-                        //             return null;
-                        //           },
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Positioned(
-                        //   // rectangle165Up (43:10)
-                        //   left: 26 * fem,
-                        //   top: 274.6745605469 * fem,
-                        //   child: Align(
-                        //     child: SizedBox(
-                        //       width: 337 * fem,
-                        //       height: 46.94 * fem,
-                        //       child: Material(
-                        //         borderRadius: BorderRadius.circular(20 * fem),
-                        //         color: Color(0xffd9d9d9),
-                        //         child: TextField(
-                        //           keyboardType: TextInputType.emailAddress,
-                        //           decoration: InputDecoration(
-                        //             hintText: "Email",
-                        //             hintStyle: TextStyle(
-                        //               color: Colors.grey, // Adjust the color as needed
-                        //             ),
-                        //             filled: true,
-                        //             fillColor: Color(0xffd9d9d9),
-                        //             border: OutlineInputBorder(
-                        //               borderRadius: BorderRadius.circular(20 * fem),
-                        //               borderSide: BorderSide.none,
-                        //             ),
-                        //             contentPadding: EdgeInsets.symmetric(
-                        //                 horizontal: 20 * fem, vertical: 10 * fem),
-                        //           ),
-
-                        //           style: SafeGoogleFont(
-                        //             'Inknut Antiqua',
-                        //             fontSize: 20 * ffem,
-                        //             fontWeight: FontWeight.w400,
-                        //             height: 2.5775 * ffem / fem,
-                        //             color: Color.fromARGB(255, 0, 0, 0),
-                        //           ),
-
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                         Positioned(
                           // rectangle20aix (84:36)
                           left: 24 * fem,
@@ -531,9 +445,10 @@ class _LoginState extends State<Login> {
                           child: GestureDetector(
                             onTap: () {
                               if (_formKey.currentState!.validate()) {
-                                print("Sucess");
-                              } else
-                                print("Not success");
+                                print("Success");
+                              } else {
+                                print("Validation failed");
+                              }
                             },
                             child: TextButton(
                               onPressed: () async {
@@ -543,50 +458,43 @@ class _LoginState extends State<Login> {
                                 if (_formKey.currentState!.validate()) {
                                   FirebaseFirestore db =
                                       FirebaseFirestore.instance;
-                                  // initialise the firebasefirestore client
-                                  String email = emailController.value.text;
-                                  // store email
 
-                                  final docRef =
-                                      db.collection("signup").doc(email);
-                                  // check if a document with that email exists
-                                  docRef
-                                      .get()
-                                      .then((DocumentSnapshot doc) async {
+                                  String email = emailController.value.text;
+
+                                  try {
+                                    DocumentSnapshot doc = await db
+                                        .collection("signup")
+                                        .doc(email)
+                                        .get();
+
                                     if (doc.exists) {
                                       // User with the provided email exists
                                       final data =
                                           doc.data() as Map<String, dynamic>;
-                                      String storedPassword = data[
-                                          "Password"]; // Assuming "password" is the key for the password in your Firestore document
+                                      String storedPassword = data["password"];
 
                                       // Now check if the entered password matches the stored password
                                       String enteredPassword =
                                           _passwordController.value.text;
 
                                       if (storedPassword == enteredPassword) {
-                                        // store user email using shared preferences.
+                                        // Store user email using shared preferences.
                                         await prefs.setString(
                                             'user_email', email);
 
                                         // Passwords match, allow login
-
-// Save an integer value to 'counter' key.
-
                                         print("Login successful");
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => DonorBG()),
                                         );
-                                        // navigation
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(const SnackBar(
                                           content: Text("Wrong Password"),
                                           duration: Duration(seconds: 3),
                                         ));
-                                        // Passwords don't match
                                         print("Incorrect password");
                                       }
                                     } else {
@@ -596,26 +504,16 @@ class _LoginState extends State<Login> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                         content: Text(
-                                            "Email does not exists, Sign up first"),
+                                            "Email does not exist, Sign up first"),
                                         duration: Duration(seconds: 3),
                                       ));
                                     }
-                                  });
-                                } else {
-                                  print("Validation failed");
+                                  } catch (e) {
+                                    print("Error fetching document: $e");
+                                    // Handle the error, show an alert or a snackbar
+                                  }
                                 }
                               },
-                              // onPressed: () {
-                              //   if (_formKey.currentState!.validate()) {
-                              //     Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) => DonorBG()),
-                              //     );
-                              //     print("Sucess");
-                              //   } else
-                              //     print("Not success");
-                              // },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
                               ),
@@ -648,94 +546,6 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        // Positioned(
-                        //   left: 20 * fem,
-                        //   top: 518.3858032227 * fem,
-                        //   child: TextButton(
-                        //     onPressed: () {
-                        //       // Ensure the _formKey is linked to the Form widget
-                        //       if (_formKey.currentState!.validate()) {
-                        //         // If all data is valid, navigate to the next screen
-                        //         Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(builder: (context) => DonorBG()),
-                        //         );
-                        //         print("Success");
-                        //       } else {
-                        //         print("Not success");
-                        //       }
-                        //     },
-                        //     style: TextButton.styleFrom(
-                        //       padding: EdgeInsets.zero,
-                        //     ),
-                        //     child: SizedBox(
-                        //       width: 349 * fem,
-                        //       height: 63.92 * fem,
-                        //       child: Container(
-                        //         decoration: BoxDecoration(
-                        //           color: Color(0xffff3737),
-                        //           borderRadius: BorderRadius.circular(20 * fem),
-                        //         ),
-                        //         child: Center(
-                        //           child: Text(
-                        //             'Login',
-                        //             style: SafeGoogleFont(
-                        //               'Inknut Antiqua',
-                        //               fontSize: 24 * ffem,
-                        //               fontWeight: FontWeight.w400,
-                        //               height: 2.5775 * ffem / fem,
-                        //               color: Color(0xffffffff),
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Positioned(
-                        //   left: 20 * fem,
-                        //   top: 518.3858032227 * fem,
-                        //   child: TextButton(
-                        //     onPressed: () {
-                        //       if (_formKey.currentState!.validate()) {
-                        //         Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(builder: (context) => DonorBG()),
-                        //         );
-                        //         print("Sucess");
-                        //       } else
-                        //         print("Not success"); // Navigate to the "Donor.dart" page
-                        //     },
-                        //     style: TextButton.styleFrom(
-                        //       padding: EdgeInsets.zero,
-                        //     ),
-                        //     child: SizedBox(
-                        //       width: 349 * fem,
-                        //       height: 63.92 * fem,
-                        //       child: Container(
-                        //         width: double.infinity,
-                        //         height: double.infinity,
-                        //         decoration: BoxDecoration(
-                        //           color: Color(0xffff3737),
-                        //           borderRadius: BorderRadius.circular(20 * fem),
-                        //         ),
-                        //         child: Center(
-                        //           child: Text(
-                        //             'Login',
-                        //             textAlign: TextAlign.center,
-                        //             style: SafeGoogleFont(
-                        //               'Inknut Antiqua',
-                        //               fontSize: 24 * ffem,
-                        //               fontWeight: FontWeight.w400,
-                        //               height: 2.5775 * ffem / fem,
-                        //               color: Color(0xffffffff),
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                         Positioned(
                           // orwcp (46:11)
                           left: 181 * fem,

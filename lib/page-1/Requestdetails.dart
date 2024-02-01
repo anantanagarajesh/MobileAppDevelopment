@@ -28,7 +28,7 @@ class _HospitalState extends State<RequestDetails> {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2020), // Change this to your required start date
+      firstDate: DateTime(2024), // Change this to your required start date
       lastDate: DateTime(2030), // Change this to your required end date
     );
     if (picked != null && picked != DateTime.now()) {
@@ -64,15 +64,6 @@ class _HospitalState extends State<RequestDetails> {
       // Handle the error, perhaps show a snackbar/message to the user
     }
   }
-
-  // void _submitRequest() {
-  //   // TODO: Implement submission logic
-  //   print(
-  //       'Submit request with selected unit $_selectedUnit and critical: $_isCritical');
-  //   Navigator.of(context).push(
-  //     MaterialPageRoute(builder: (context) => donors()),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +112,7 @@ class _HospitalState extends State<RequestDetails> {
                   border: OutlineInputBorder(),
                 ),
                 value: _selectedUnit,
-                items: ['1', '2', '3'].map((String value) {
+                items: ['1', '2', '3', '4', '5'].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -135,6 +126,7 @@ class _HospitalState extends State<RequestDetails> {
               ),
               SizedBox(height: 16),
               TextField(
+                controller: _locationController,
                 decoration: InputDecoration(
                   labelText: "Location",
                   border: OutlineInputBorder(),
@@ -163,7 +155,9 @@ class _HospitalState extends State<RequestDetails> {
                 },
                 secondary: Icon(
                   Icons.priority_high,
-                  color: _isCritical ? Colors.red : Colors.grey,
+                  color: _isCritical
+                      ? const Color.fromARGB(255, 243, 66, 53)
+                      : Colors.grey,
                 ),
               ),
               SizedBox(height: 24),

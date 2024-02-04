@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/Requestdetails.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ReceiveBG extends StatefulWidget {
   @override
@@ -274,7 +275,11 @@ class _ReceiveBGState extends State<ReceiveBG> {
                                     right: 50 * fem,
                                     child: ElevatedButton(
                                       onPressed: selectedBloodGroup != null
-                                          ? () {
+                                          ? () async {
+                                        final SharedPreferences prefs =
+                                            await SharedPreferences.getInstance();
+                                        await prefs.setString(
+                                            'bloodGroup', selectedBloodGroup!);
                                               // Handle the request logic here
                                               Navigator.push(
                                                 context,

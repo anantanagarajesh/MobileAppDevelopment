@@ -428,7 +428,7 @@ class _DonationPageState extends State<DonationPage> {
                   child: GestureDetector(
                     onTap: () async {
                       const urlString =
-                          'hhttps://www.google.com/maps/@12.9322864,77.5733936,15z?entry=ttu'; // Replace with your desired URL
+                          'https://www.google.com/maps/@12.9322864,77.5733936,15z?entry=ttu'; // Replace with your desired URL
                       final Uri url = Uri.parse(urlString);
                       if (await canLaunchUrl(url)) {
                         await launchUrl(url);
@@ -1237,52 +1237,42 @@ class _DonationPageState extends State<DonationPage> {
             Positioned(
               left: 133 * fem,
               top: 780 * fem,
-              child: GestureDetector(
-                onTap: () {
-                  // Navigate to the desired page when "Save" is pressed
+              child: TextButton(
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            Ailments()), // Replace 'YourPage' with the actual class name
+                      builder: (context) => Ailments(),
+                    ),
                   );
                 },
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              Ailments()), // Replace 'YourPage' with the actual class name
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Container(
+                  width: 124 * fem,
+                  height: 52 * fem,
+                  decoration: BoxDecoration(
+                    color: Color(0xffff3737),
+                    borderRadius: BorderRadius.circular(20 * fem),
                   ),
-                  child: Container(
-                    width: 124 * fem,
-                    height: 52 * fem,
-                    decoration: BoxDecoration(
-                      color: Color(0xffff3737),
-                      borderRadius: BorderRadius.circular(20 * fem),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Save',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Inknut Antiqua',
-                          fontSize: 20 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 2.5775 * ffem / fem,
-                          color: Color(0xffffffff),
-                        ),
+                  child: Center(
+                    child: Text(
+                      'Save',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inknut Antiqua',
+                        fontSize: 20 * ffem,
+                        fontWeight: FontWeight.w400,
+                        height: 2.5775 * ffem / fem,
+                        color: Color(0xffffffff),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
+
             Positioned(
               // fullnamekp4 (122:117)
               left: 32 * fem,

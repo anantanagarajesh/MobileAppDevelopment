@@ -3,6 +3,7 @@ import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/DonationPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DonorBG extends StatefulWidget {
   @override
@@ -46,19 +47,22 @@ class _DonorBGState extends State<DonorBG> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!');
-        // Navigate to login or signup page
-      } else {
-        print('User is signed in!');
-        // Execute logic for signed-in user
-      }
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   final SharedPreferences prefs =
+  //       await SharedPreferences.getInstance();
+  //   String userEmail = prefs.getString('user_email').toString();
+  //
+  //   if (userEmail == null) {
+  //     print('User is currently signed out!');
+  //     // Navigate to login or signup page
+  //   } else {
+  //     print('User is signed in!');
+  //     // Execute logic for signed-in user
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -292,22 +296,37 @@ class _DonorBGState extends State<DonorBG> {
                                       onPressed: selectedBloodGroup != null
                                           ? () async {
                                               try {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            DonationPage()));
+                                                final SharedPreferences prefs =
+                                                await SharedPreferences.getInstance();
                                                 // Get the current user
-                                                User? user = FirebaseAuth
-                                                    .instance.currentUser;
-                                                if (user != null) {
+
+                                                String userEmail = prefs.getString('user_email').toString();
+
+                                                print(userEmail);
+
+                                                // User? user = FirebaseAuth
+                                                //     .instance.currentUser;
+
+                                                if (userEmail != null) {
                                                   print("it is working");
                                                   // Path to the user's document in Firestore
                                                   DocumentReference userDoc =
                                                       FirebaseFirestore.instance
                                                           .collection(
                                                               'DonorBloodGroup')
-                                                          .doc(user.uid);
+                                                          .doc(userEmail);
+
+                                                  FirebaseFirestore.instance
+                                                      .collection('DonorBloodGroup')
+                                                      .doc(userEmail)
+                                                      .set({
+                                                    'bloodGroup': selectedBloodGroup,
+                                                    'emailId': userEmail,
+                                                    // other fields if needed
+                                                  })
+                                                      .then((value) => print("Document successfully written!"))
+                                                      .catchError((error) => print("Error writing document: $error"));
+
 
                                                   // Update the user's profile with the selected blood group
                                                   await userDoc.set(
@@ -318,9 +337,14 @@ class _DonorBGState extends State<DonorBG> {
                                                       SetOptions(
                                                           merge:
                                                               true)); // Merge true to update the document without overwriting other fields
-
                                                   // Navigate to the DonationPage or show a success message
                                                 }
+
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            DonationPage()));
                                               } catch (e) {
                                                 // Handle errors, e.g., show an error message
                                                 print(

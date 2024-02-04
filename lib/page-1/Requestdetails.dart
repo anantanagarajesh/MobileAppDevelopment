@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/page-1/HospitalDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:myapp/page-1/donors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RequestDetails extends StatefulWidget {
   @override
@@ -43,7 +45,7 @@ class _HospitalState extends State<RequestDetails> {
     Navigator.pop(context);
   }
 
-  void _submitRequest() async {
+  Future<void> _submitRequest() async {
     try {
       await _firestore.collection("requests").add({
         'patient_name': _patientNameController.text,
@@ -56,9 +58,15 @@ class _HospitalState extends State<RequestDetails> {
         // Add other fields as required
       });
 
+      // Navigator.of(context)
+      //     .push(MaterialPageRoute(builder: (context) => HospitalDetails()));
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //       builder: (context) =>
+      //           HospitalDetails()), // Replace with your target page
+      // );
       print('Request submitted successfully');
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => HospitalDetails()));
     } catch (e) {
       print('Error submitting request: $e');
       // Handle the error, perhaps show a snackbar/message to the user
@@ -166,14 +174,15 @@ class _HospitalState extends State<RequestDetails> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         // Call the `_submitRequest` function before navigating.
-                        _submitRequest();
+                        await _submitRequest();
+
+
 
                         // Navigate to the next page.
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => HospitalDetails()),
+                          MaterialPageRoute(builder: (context) => HospitalDetails()),
                         );
                       },
                       child: Text('Next'),
@@ -196,6 +205,7 @@ class _HospitalState extends State<RequestDetails> {
                   ),
                 ],
               ),
+
             ],
           ),
         ),

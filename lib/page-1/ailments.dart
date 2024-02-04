@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:myapp/page-1/Thanks.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Ailments extends StatefulWidget {
   @override
@@ -23,20 +24,53 @@ class _AilmentsState extends State<Ailments> {
   String bloodPressure = '';
 
   Future<void> saveDetails() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      await FirebaseFirestore.instance
-          .collection('UserHealthDetails')
-          .doc(user.uid)
-          .set({
-        'bloodPressure': bloodPressure,
-        ...responses,
-      });
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Thanks()));
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userEmail = prefs.getString('user_email').toString();
+
+    if (userEmail != null) {
+      bool isEligible = checkEligibility();
+
+      if (isEligible) {
+        await FirebaseFirestore.instance
+            .collection('UserHealthDetails')
+            .doc(userEmail)
+            .set({
+          'bloodPressure': bloodPressure,
+          ...responses,
+        });
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Thanks()));
+      } else {
+        showNotEligibleDialog();
+      }
     } else {
       print('No user logged in!');
     }
+  }
+
+  bool checkEligibility() {
+    // Check if any of the responses is 'YES'
+    return !responses.containsValue('YES');
+  }
+
+  void showNotEligibleDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Not Eligible to Donate'),
+          content: Text('You are not eligible to donate based on your responses.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget yesNoQuestion(String question, String key) {
@@ -100,7 +134,7 @@ class _AilmentsState extends State<Ailments> {
                   hintText: 'Low/Normal/High',
                   border: OutlineInputBorder(),
                   contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 ),
                 onSaved: (value) => bloodPressure = value ?? '',
                 validator: (value) => value == null || value.isEmpty
@@ -141,6 +175,7 @@ class _AilmentsState extends State<Ailments> {
     );
   }
 }
+
 // import 'package:flutter/material.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';

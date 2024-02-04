@@ -316,6 +316,18 @@ class _DonorBGState extends State<DonorBG> {
                                                               'DonorBloodGroup')
                                                           .doc(userEmail);
 
+                                                  FirebaseFirestore.instance
+                                                      .collection('DonorBloodGroup')
+                                                      .doc(userEmail)
+                                                      .set({
+                                                    'bloodGroup': selectedBloodGroup,
+                                                    'emailId': userEmail,
+                                                    // other fields if needed
+                                                  })
+                                                      .then((value) => print("Document successfully written!"))
+                                                      .catchError((error) => print("Error writing document: $error"));
+
+
                                                   // Update the user's profile with the selected blood group
                                                   await userDoc.set(
                                                       {
